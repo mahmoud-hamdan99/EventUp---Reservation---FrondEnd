@@ -1,0 +1,64 @@
+<div class="footer-wrapper">
+	<div class="container">
+		<div class="footer-inner">
+			<div class="footer-top">
+				<div class="footer-top-left">
+				
+					<h2><img style="width: 50px;" src="{{web.createImagpath(websites[0].logopath)}}">
+						{{websites[0].websitename}}</h2>
+
+					<p>
+						{{abouts[0].description|slice:0:197
+						}}
+                        <a style="cursor: pointer;" *ngIf="abouts[0].description.length > 200" routerLink="/client/about">...More</a>
+					
+						
+					</p>
+
+					<div class="social">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-linkedin"></i></a>
+						<a href="#"><i class="fa fa-envelope"></i></a>
+						<a href="#"><i class="fa fa-instagram"></i></a>
+					</div><!-- /.social -->									
+				</div><!-- /.footer-top-left -->
+
+				<div class="footer-top-right">
+					<h2>Explore</h2>
+					<div class="single-wedge">
+					
+						<div class="footer-links">
+							<div class="footer-row">
+								<ul class="align-items-center">
+									<li class="li"><a class="single-link" routerLink="/client">Home</a></li>
+									<li class="li"><a class="single-link" routerLink="/client/hall">Hall</a></li>
+									<li class="li"><a class="single-link" routerLink="/client/searchmap">Hall By Location</a></li>
+									<li class="li"><a class="single-link" routerLink="/client/contact" >Contact</a></li>
+									<li class="li"><a class="single-link" routerLink="/client/about">About</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				
+				</div><!-- /.footer-top-right -->
+
+			
+			</div><!-- /.footer-top -->
+
+			<div class="footer-bottom">
+				<div class="footer-left">
+					© 2022 Created by MBSF . All Rights reserved.
+				</div><!-- /.footer-left -->
+
+				<div class="footer-right">
+					<ul class="nav nav-pills">
+						<li class="nav-item"><a  class="nav-link">{{websites[0].email}}</a></li>
+						<li class="nav-item"><a  class="nav-link">{{websites[0].telephone}}</a></li>
+						
+					</ul>
+				</div><!-- /.footer-right -->			
+			</div><!-- /.footer-bottom -->
+		</div><!-- /.footer-inner -->
+	</div><!-- /.container -->
+</div>

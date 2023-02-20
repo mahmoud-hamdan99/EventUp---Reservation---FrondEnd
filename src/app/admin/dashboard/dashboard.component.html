@@ -1,0 +1,97 @@
+
+<div class="dashboard-sidebar">
+    <div class="dashboard-title">
+        <a  routerLink="/client" >
+            <img style="width: 60px;" src="{{web.createImagpath(websites[0].logopath)}}">{{websites[0].websitename}}
+        </a>
+
+        <button class="navbar-toggler pull-xs-right hidden-lg-up" type="button" data-toggle="collapse" data-target=".dashboard-nav-primary">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>						
+    </div><!-- /.dashboard-title -->
+
+    <div class="dashboard-user hidden-md-down">
+        <div class="dashboard-user-image" routerLink="/user/profile" style="background-image: url('{{image}}'); cursor: pointer;" >
+        </div><!-- /.dashboar-user-image -->
+        <strong>{{username}}</strong>
+    </div><!-- /.dashboard-user -->
+
+    <div class="dashboard-nav-primary collapse navbar-toggleable-md">
+        <ul class="nav nav-stacked">
+            <li class="nav-item dashA">
+                <a routerLink="/admin/"  class="nav-link ">
+                    <i class="fa fa-home" aria-hidden="true"></i> Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item dashA">
+                <a routerLink="/admin/users"  class="nav-link ">
+                    <i class="fa fa-users" aria-hidden="true"></i> Users
+                </a>
+            </li>
+
+            <li class="nav-item dashA">
+                <a routerLink="/admin/admins"  class="nav-link ">
+                    <i class="fa fa-cog" aria-hidden="true"></i> Admins
+                </a>
+            </li>					
+
+            <li class="nav-item dashA">
+                <a routerLink="/admin/roles"   class="nav-link ">
+                    <i class="fa fa-suitcase"></i> Roles
+                </a>
+            </li>
+            <li class="nav-item dashA">
+                <a routerLink="/admin/manageHall"  class="nav-link ">
+                    <i class="fa fa-globe"></i> Halls
+                </a>
+            </li>
+	
+            <li class="nav-item dashA">
+                <a routerLink="/admin/manageEvent"   class="nav-link ">
+                    <i class="fa fa-building"></i> Event
+                </a>
+            </li>
+            <li class="nav-item dashA">
+                <a routerLink="/admin/manageReport"   class="nav-link ">
+                    <i class="fa fa-calendar"></i> Report
+                </a>
+            </li>
+				
+            <li class="nav-item dashA">
+                <a routerLink="/admin/allPayment"  class="nav-link ">
+                    <i class="fa fa-credit-card"></i> Payment
+                </a>
+            </li>	
+
+            <li class="nav-item dashA">
+                <a  style="cursor: pointer !important;"  (click)="logoff()"  class="nav-link">
+                    <i  class="fa fa-sign-out"></i> Logout
+                </a>
+            </li>					
+        </ul>
+    </div><!-- /.dashboard-nav-primary -->
+
+    <div class="dashboard-tags hidden-md-down">
+        <h2>Manage WebSite</h2>
+
+        <ul>
+            <li><a routerLink="/admin/manageWebsite" class="fa fa-home">Home Website</a></li>
+            <li><a routerLink="/admin/manageAbout"   class="fa fa-book">About Us</a></li>
+            <li><a routerLink="/admin/manageTestimonal"   class="tag-blue">Testimonial</a></li>
+            <li><a  routerLink="/admin/manageContact"  class="tag-yellow">Contact Us</a></li>
+           
+        </ul>
+    </div><!-- /.dashboard-tags -->
+
+    <div class="dashboard-text hidden-md-down">
+        <h2>Do you need help?</h2>
+
+        <p>
+            If you have any questions, feel free to use our profile form. We will contact you as soon as possible.
+        </p>
+    </div><!-- /.dashboard-text -->
+    
+</div>

@@ -1,0 +1,150 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="main">
+    <div class="main-inner">
+
+        <div class="content-title">
+            <div class="content-title-inner">
+                <div class="container">
+                    <h1>Create Account</h1>
+                </div><!-- /.container -->
+            </div><!-- /.content-title-inner -->
+        </div><!-- /.content-title -->
+
+
+        <div class="content">
+            <div class="container">
+                <form [formGroup]="registerForm">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-8 col-lg-offset-2">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input name="username" (focus)="onFocus('username')" (blur)="onBlur()"
+                                            formControlName="username" placeholder="username" required type="text"
+                                            class="form-control">
+                                        <mat-error
+                                            *ngIf="registerForm.controls['username'].hasError('required')&& selectedField == 'username'">
+                                            username is <strong>required</strong>
+                                        </mat-error>
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group">
+                                        <label>E-mail</label>
+                                        <input name="email" (focus)="onFocus('email')" (blur)="onBlur()"
+                                            formControlName="email" placeholder="eamil" type="text"
+                                            class="form-control">
+                                        <mat-error
+                                            *ngIf="registerForm.controls['email'].hasError('email') && !registerForm.controls['email'].hasError('required')">
+                                            Please enter valid email
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="registerForm.controls['email'].hasError('required')&& selectedField == 'email'">
+                                            Email is <strong>required</strong>
+                                        </mat-error>
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" (focus)="onFocus('password')" (blur)="onBlur()"
+                                            formControlName="password" name="password" placeholder="Password"
+                                            class="form-control">
+                                        <mat-error
+                                            *ngIf="registerForm.controls['password'].hasError('minlength') && !registerForm.controls['password'].hasError('required')">
+                                            Please enter strong password
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="registerForm.controls['password'].hasError('required') && selectedField == 'password' ">
+                                            password is <strong>required</strong>
+                                        </mat-error>
+
+                                    </div><!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label for="ImgFile">Image</label>
+
+                                        <input type="file" placeholder="Choose Image" formControlName="ImgFile"
+                                            class="form-control" (change)="uploadFile($event)">
+                                          
+                                    </div>
+
+
+                                </div><!-- /.col-* -->
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>firstname</label>
+                                        <input (focus)="onFocus('firstname')" (blur)="onBlur()" name="firstname"
+                                            formControlName="firstname" placeholder="firstname" type="text"
+                                            class="form-control">
+                                        <mat-error
+                                            *ngIf="registerForm.controls['firstname'].hasError('required')&& selectedField == 'firstname'">
+                                            firstname is <strong>required</strong>
+                                        </mat-error>
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input (focus)="onFocus('lastname')" (blur)="onBlur()" name="lastname"
+                                            formControlName="lastname" placeholder="lastname" type="text"
+                                            class="form-control">
+                                        <mat-error
+                                            *ngIf="registerForm.controls['lastname'].hasError('required')&& selectedField == 'lastname'">
+                                            lastname is <strong>required</strong>
+                                        </mat-error>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Retype Password </label>
+
+                                        <input (focus)="onFocus('conpassword')" (blur)="onBlur()" type="password"
+                                            formControlName="conpassword" class="form-control" (change)="onChange()"
+                                            name="password" placeholder="Re-type Password" />
+                                        <mat-error
+                                            *ngIf="registerForm.controls['conpassword'].hasError('minlength') && !registerForm.controls['conpassword'].hasError('required')">
+                                            <small>Please enter strong password</small>
+                                        </mat-error>
+                                        <mat-error *ngIf="registerForm.controls['conpassword'].hasError('mismatch')">
+                                            <strong> password must matched with password </strong>
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="registerForm.controls['conpassword'].hasError('required') && selectedField == 'conpassword' ">
+                                            password is <strong>required</strong>
+                                        </mat-error>
+
+                                    </div><!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>BirthDate</label>
+                                        <input type="date" formControlName="birthDate" class="form-control"
+                                            name="birthDate" placeholder="birthDate" />
+                                    </div>
+                                </div><!-- /.col-* -->
+                            </div><!-- /.row -->
+
+                            <div class="center">
+                                <div class="checkbox">
+                                    <label>
+                                        <div class="ez-checkbox"><input type="checkbox" class="ez-hide"></div> By
+                                        signing up, you agree with the <a href="terms-conditions.html">terms and
+                                            conditions</a>.
+                                    </label>
+                                </div><!-- /.form-group -->
+
+                                <div class="form-group-btn">
+                                    <button [disabled]="!registerForm.valid" (click)="submit()" type="submit" class="btn btn-primary">Create
+                                        Account</button>
+                                </div><!-- /.form-group-btn -->
+                            </div><!-- /.center -->
+
+                            <div class="form-group-bottom-link">
+                                <a routerLink="/auth/login" >I already have an account <i
+                                        class="fa fa-long-arrow-right"></i></a>
+                            </div><!-- /.form-group-bottom-link -->
+                        </div><!-- /.col-* -->
+                    </div><!-- /.row -->
+                </form>
+            </div><!-- /.container -->
+        </div><!-- /.content -->
+    </div><!-- /.main-inner -->
+</div><!-- /.main -->
+
+<app-footer></app-footer>

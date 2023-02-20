@@ -1,0 +1,58 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+        <app-dashboard></app-dashboard>
+        <div style="width: 75%;" class="dashboard-content">
+            <div class="container-fluid">
+                <div class="dashboard-header">
+                    <h1 style="color: black;">Testomonials Page</h1>
+                </div><!-- /.dashboard-header -->
+
+                <div class="row">
+                    <table class="table table-hover table-striped table-bordered table-users">
+                        <thead>
+                            <tr >
+                                <th>Name</th>
+                                <th>Feedback</th>
+                                <th>Status</th>
+                                <th>Image</th>
+                                <th class="min-width" style="text-align: center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of testimonials | paginate: { itemsPerPage: 5, currentPage: p }">
+                                <td>{{obj.personalname}}</td>
+                                <td>{{obj.feedback}}</td>
+                                <td>{{obj.status}}</td>
+                                <td><img style="width: 150px;height: 150px;" src="{{obj.imageUrl}}"></td>
+                                <td *ngIf="obj.status=='Unapproved';else elseBlock1" class="min-width">
+                                    <a style="width:100px;" (click)="ApproveTestimonial(obj.testimonialid)"
+                                        class="btn btn-success"><i class="fa fa-pencil"></i> Approve</a>
+                                </td>
+                                <ng-template #elseBlock1>
+
+
+                                    <td>
+
+                                        <a style="width:100px;" (click)="UnapproveTestimonial(obj.testimonialid)"
+                                            class="btn btn-danger"><i class="fa fa-times"></i> Unapprove</a>
+
+                                    </td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="pagination-wrapper">
+
+                        <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+                    </div><!-- /.pagination-wrapper -->
+                </div><!-- /.row -->
+                <style>
+                    .my-pagination /deep/ .ngx-pagination .current {
+                        background: #0BB7A5;
+                    }
+                </style>
+            </div><!-- /.container -->
+        </div><!-- /.dashboard-content -->
+    </div><!-- /.dashboard -->
+</div><!-- /.page-wrapper -->

@@ -1,0 +1,129 @@
+<div class="page-wrapper">
+    <app-nav-bar></app-nav-bar>
+    <div class="main-wrapper">
+	    <div class="main">
+	        <div class="main-inner">
+	        		        
+					<div class="content-title">
+	<div class="content-title-inner">
+		<div class="container">		
+			<h1>Hall</h1>		
+
+			<ol class="breadcrumb">
+				<li><a href="">Home</a></li>
+				<li><a href="client/hall">Hall</a></li>
+			</ol>			
+		</div><!-- /.container -->
+	</div><!-- /.content-title-inner -->
+</div><!-- /.content-title -->
+
+
+
+
+<div class="content">
+    <div class="container">
+<div class="filter filter-gray push-bottom">
+<form (keydown)="keyDownFunction($event)">
+<div class="row">
+
+
+<div class="col-md-3">
+<div class="form-group">
+<label>Name</label>
+<input type="text" class="form-control" [(ngModel)]="nameSearch"  name="name">
+</div><!-- /.form-group -->
+</div><!-- /.col-* -->
+
+<div class="col-md-3">
+<div class="form-group">
+<label>Usage</label>
+<input type="text" class="form-control" [(ngModel)]="usageSearch"  name="usage"> 
+</div><!-- /.form-group -->
+</div><!-- /.col-* -->
+
+<div class="col-md-3">
+<div class="form-group">
+<label>Capacity</label>
+<input type="text" class="form-control" [(ngModel)]="capacitySearch" name="capacity">
+</div><!-- /.form-group -->		
+</div><!-- /.col-* -->
+
+<div class="col-md-3">
+<div class="form-group">
+<label>Max Price</label>
+<input type="text" class="form-control" [(ngModel)]="priceSearch"  name="price">
+</div><!-- /.form-group -->		
+</div><!-- /.col-* -->
+
+		
+</div><!-- /.row -->
+</form>
+</div><!-- /.filter -->
+
+
+<div class="row">
+    <div class="col-md-12 col-lg-12">
+        <div class="row" >
+
+            <div class="col-md-6 col-lg-4" *ngFor="let item of hall.allHalls| paginate: { itemsPerPage: 9, currentPage: p }">
+                <div class="listing-box">
+                    <div class="listing-box-image" style="background-image: url({{item.imageUrl}})">
+                        <div class="listing-box-image-label" *ngIf="item.sale>0" >SALE</div><!-- /.listing-box-image-label -->
+
+                        <span class="listing-box-image-links">
+                            <a (click)="openHallDetails(item.hallid)" ><i class="fa fa-search"></i> <span>View detail</span></a>
+                            <a  (click)=" openEventReserve(item.hallid)" ><i class="fa fa-money"></i> <span>Reserve</span></a>
+                        </span>
+                    </div><!-- /.listing-box-image -->
+
+                    <div class="listing-box-title">
+                        <h2><a href="">{{item.name}}</a></h2>
+                        <h3>$ {{item.reservationprice}}</h3>
+                    </div><!-- /.listing-box-title -->
+
+                    <div class="listing-box-content">
+                        <dl>
+                            <dt>Usage</dt>
+                            <dd>{{item.usage}}</dd>
+                            <dt>Rate</dt>
+                            <dd>{{item.rate}} <i class="fa fa-star"></i></dd>
+                            <dt>Capacity</dt>
+                            <dd>{{item.capacity}} <i class="fa fa-user"></i></dd>
+                            <dt>Waiters</dt>
+                            <dd *ngIf="item.waiters>0; else elseBlock1">Yes</dd>
+                            <ng-template #elseBlock1><dd>No</dd></ng-template>
+                            
+                        </dl>
+                    </div><!-- /.listing-box-cotntent -->
+                </div><!-- /.listing-box -->
+            </div><!-- /.col-* -->
+        </div><!-- /.row -->
+
+
+        <div class="pagination-wrapper">
+      
+            <pagination-controls  class="my-pagination"  (pageChange)="p = $event"></pagination-controls>
+                    </div>
+    </div><!-- /.col-sm-* -->
+
+
+</div><!-- /.row -->
+<style>
+    .my-pagination /deep/ .ngx-pagination .current {
+      background: #0BB7A5;
+    }
+   
+  </style>
+</div><!-- /.container -->
+</div><!-- /.content -->
+
+
+
+
+
+
+</div><!-- /.main-inner -->
+</div><!-- /.main -->
+</div><!-- /.main-wrapper -->
+<app-footer></app-footer>
+</div><!-- /.page-wrapper -->

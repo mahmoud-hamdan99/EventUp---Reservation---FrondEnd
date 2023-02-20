@@ -1,0 +1,89 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+<app-dashboard></app-dashboard>
+<div class="dashboard-content">	
+    <div class="dashboard-header">
+        <h1>User Detail</h1>
+        <a *ngIf="user.singelUser.position=='NormalUser'" routerLink="/admin/users" class="btn btn-primary" style="
+    float: right;"><i class="fa fa-long-arrow-left"></i>Back</a>
+          <a *ngIf="user.singelUser.position=='Admin'" routerLink="/admin/admins" class="btn btn-primary" style="
+          float: right;"><i class="fa fa-long-arrow-left"></i>Back</a>
+    </div><!-- /.dashboard-header -->
+<div class="listing-detail col-md-8 col-lg-12">
+
+    <div class="row">
+
+        <div class="col-lg-4">
+            <h2>{{user.singelUser.username}}</h2>
+            <div class="listing-box-image-v2" style="background-image: url('{{user.singelUser.image}}')"></div>
+           
+       
+        </div><!-- /.col-* -->
+        <div class="col-lg-8">
+            <div class="overview">
+                <h2>Information</h2>
+
+                <ul>
+                    <li><strong>First Name</strong><span>{{user.singelUser.firstname}}</span></li>
+                    <li><strong>Last Name</strong><span>{{user.singelUser.lastname}}</span></li>
+                    <li><strong>E-mail</strong><span>{{user.singelUser.email}}</span></li>			                
+                    <li *ngIf="user.singelUser.birthdate!=null"><strong>Birthdate</strong><span>{{user.singelUser.birthdate |date}}</span></li>			                
+                    <li><strong>Position</strong><span>{{user.singelUser.position}}</span></li> 
+                             
+                </ul>
+            </div><!-- /.overview -->				
+        </div><!-- col-* -->
+
+        
+
+    </div><!-- /.row -->
+   <div *ngIf="user.singelUser.position!='Admin'">
+    <h2>All Event reserved</h2>
+    <div class="listing-box-wrapper">
+        <div class="row">
+            
+                <div *ngFor="let item of event.allEventUser |paginate: { itemsPerPage: 4, currentPage: p }" class="col-md-6 col-lg-3">
+                    <div class="listing-box">
+                 <div class="listing-box-image" style="background-image: url('{{item.imageUrl}}')">
+              <div class="listing-box-image-label">Reserved</div><!-- /.listing-box-image-label -->
+
+           	
+              </div><!-- /.listing-box-image -->
+
+<div class="listing-box-title">
+<h2><a href="properties-detail-standard.html">{{item.name}}</a></h2>
+<h3>${{item.totalprice}}</h3>
+</div><!-- /.listing-box-title -->
+
+<div class="listing-box-content">
+<dl>
+    <dt>Type</dt><dd>{{item.eventtype}}</dd>
+    <dt>Start Date</dt><dd>{{item.startdate |date:"short"}}</dd>
+    <dt>End Date</dt><dd>{{item.enddate |date:"short"}}</dd>
+</dl>
+</div><!-- /.listing-box-cotntent -->
+</div><!-- /.listing-box -->
+                </div><!-- /.col-* -->
+            
+         
+               
+
+                <div class="pagination-wrapper">
+      
+                    <pagination-controls  class="my-pagination"  (pageChange)="p = $event"></pagination-controls>
+                </div>
+                
+                            <style>
+                                .my-pagination /deep/ .ngx-pagination .current {
+                                  background: #0BB7A5;
+                                }
+                               
+                              </style>
+            
+        </div><!-- /.row -->
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>

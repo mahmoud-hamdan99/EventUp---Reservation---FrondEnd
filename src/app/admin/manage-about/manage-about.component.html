@@ -1,0 +1,60 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+        <app-dashboard></app-dashboard>
+        <div class="dashboard-content">
+            <div class="container-fluid">
+                <div class="dashboard-header">
+                    <h1 class="mat-h1-v2" >About Us</h1>
+
+                  
+                </div>
+<div class="content"> 
+        <div class="container">
+            <div class="posts">	
+                
+                    <div class="post" *ngFor="let obj of abouts">
+                        <form [formGroup]="aboutusform">
+                        <div class="post-image">
+                            <div class="post-image-link-v2" style="background-image: url('{{aboutusService.createImagpath(obj.imagepath)}}');">
+                            </div>
+        
+                            <div class="post-author">	
+                                <input type="file" #file formControlName="ImgFile" (change)="uploadFile($event)" style="display:none;">				
+                                <button type="button" (click)="file.click()" class="btn btn-primary" >
+                                    <i class="fa fa-upload"></i> <span>Upload Image</span></button>
+                               
+        
+                              
+                            </div><!-- /.post-author -->
+                        </div><!-- /.post-image -->
+        
+                        <div class="post-title">
+                            <h1>Description</h1>
+                        </div><!-- /.post-title -->
+        
+       
+                        <div class="post-content">
+                            <textarea [readonly]="disable" style="resize: none;" (click)="descriptionChange()" class="form-control" formControlName="Description" name="desc" [(ngModel)]="obj.description" rows="12" placeholder="Write the description here ....."></textarea>
+
+                        </div><!-- /.post-content -->
+
+                        <div class="post-read-more">
+                            <a  (click)="updateAboutUs(obj.aboutusid)"> Save <i class="fa fa-chevron-right"></i></a>
+                        </div>
+                    </form>
+                    </div><!-- /.post-->
+                
+        
+                
+            </div><!-- /.posts-->
+        </div>
+    </div>
+</div>
+</div>
+    </div><!-- /.dashboard -->
+</div><!-- /.page-wrapper -->
+
+
+
+
+

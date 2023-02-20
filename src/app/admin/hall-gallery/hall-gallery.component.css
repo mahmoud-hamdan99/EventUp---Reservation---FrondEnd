@@ -1,0 +1,44 @@
+.mat-h1-v2 {
+    font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0px 0 -19px !important;
+}
+
+.grows{
+    margin : 15px;
+}
+
+
+.img-wraps {
+    position: relative;
+    display: inline-block;
+    
+    font-size: 0;
+}
+.img-wraps .closes {
+    position: absolute;
+    top: 4px;
+    left: 17px;
+    z-index: 100;
+    background-color: #FFF;
+    padding: 4px 3px;
+     
+    color: #14b9a8;
+    font-weight: normal;
+    cursor: pointer;
+    
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+    border:1px solid #14b9a8;
+}
+.img-wraps:hover .closes {
+    opacity: 1;
+}
+
+
+
+.btn-color{
+    background-color: #14b9a8;
+}

@@ -1,0 +1,181 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+        <app-dashboard></app-dashboard>
+        <div style="width: 75%;" class="dashboard-content">
+            <div class="container-fluid">
+                <div class="dashboard-header">
+                    <h1 class="mat-h1-v2" style="color: black;">Website Page</h1>
+                </div><!-- /.dashboard-header -->
+
+                <div class="row">
+                    <table class="table table-users">
+                        <thead>
+                            <tr>
+                                <th>Website Name</th>
+                                <th>Logo</th>
+                                <th>Home-Background</th>
+                                <th>Telephone</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Worktime</th>
+                                <th>logo Information</th>
+                                <th class="min-width" style="text-align: center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let obj of websites">
+                                <td>{{obj.websitename}}</td>
+                                <td><img style="width: 120px;height: 120px;border-radius: 70%;" [src]="web.createImagpath(obj.logopath)">
+                                </td>
+                                <td><img style="width: 120px;height: 120px;border-radius: 70%;"
+                                        [src]="web.createImagpath(obj.backgroundimg)"></td>
+                                <td>{{obj.telephone}}</td>
+                                <td>{{obj.email}}</td>
+                                <td>{{obj.address}}</td>
+                                <td>{{obj.worktime}}</td>
+                                <td>{{obj.logoInformation}}</td>
+                                <td class="min-width">
+                                    <a (click)="populateForm(obj,obj.logopath,obj.backgroundimg)"
+                                        class="btn btn-info"><i class="fa fa-pencil"></i> Edit</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ng-template #editWebsiteDialog>
+                        <div class="dashboard-header">
+                            <h1 style="color: black; margin-left: 30px;">Website Edit Section</h1>
+                        </div><!-- /.dashboard-header -->
+
+                        <div class="row">
+                            <form [formGroup]="editWebsiteForm" #form="ngForm" (ngSubmit)="updateWebsite(website)">
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Website Name</label>
+                                        <input type="text" (focus)="onFocus('Websitename')" (blur)="onBlur()"
+                                            name="websitename" formControlName="Websitename"
+                                            [(ngModel)]="website.websitename" class="form-control" required>
+                                        <mat-error
+                                            *ngIf="editWebsiteForm.controls['Websitename'].hasError('required') && selectedField == 'Websitename'">
+                                            Website name is <strong>required</strong>
+                                        </mat-error>
+                                    </div>
+                                    <!--/.form-group -->
+                                </div><!-- /.col-* -->
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Telephone</label>
+                                        <input type="text" (focus)="onFocus('Telephone')" (blur)="onBlur()"
+                                            name="telephone" formControlName="Telephone" [(ngModel)]="website.telephone"
+                                            class="form-control" required>
+                                        <mat-error
+                                            *ngIf="editWebsiteForm.controls['Telephone'].hasError('minlength') && !editWebsiteForm.controls['Telephone'].hasError('required') && !editWebsiteForm.controls['Telephone'].hasError('maxLength')&& selectedField == 'Telephone'">
+                                            The phone number should be <strong>(10) - degits</strong>
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="editWebsiteForm.controls['Telephone'].hasError('required') && selectedField == 'Telephone'">
+                                            Phone number is <strong>required</strong>
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="editWebsiteForm.controls['Telephone'].hasError('maxlength') && selectedField == 'Telephone'">
+                                            The phone number should be <strong>(10) - degits</strong>
+                                        </mat-error>
+                                    </div>
+                                    <!--/.form-group -->
+                                </div><!-- /.col-* -->
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" name="email" (focus)="onFocus('Email')" (blur)="onBlur()"
+                                            formControlName="Email" [(ngModel)]="website.email" class="form-control"
+                                            required>
+                                        <mat-error
+                                            *ngIf="editWebsiteForm.controls['Email'].hasError('email') && !editWebsiteForm.controls['Email'].hasError('required')&& selectedField == 'Email'">
+                                            Please enter a valid email
+                                        </mat-error>
+                                        <mat-error
+                                            *ngIf="editWebsiteForm.controls['Email'].hasError('required')&& selectedField == 'Email'">
+                                            Email is <strong>required</strong>
+                                        </mat-error>
+                                    </div>
+                                    <!--/.form-group -->
+                                </div><!-- /.col-* -->
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" name="address" (focus)="onFocus('Address')" (blur)="onBlur()"
+                                            formControlName="Address" [(ngModel)]="website.address" class="form-control"
+                                            required>
+                                        <mat-error
+                                            *ngIf="editWebsiteForm.controls['Address'].hasError('required') && selectedField == 'Address'">
+                                            Address is <strong>required</strong>
+                                        </mat-error>
+                                    </div>
+                                    <!--/.form-group -->
+                                </div><!-- /.col-* -->
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Worktime</label>
+                                        <input type="text" name="time" (focus)="onFocus('Worktime')" (blur)="onBlur()"
+                                            formControlName="Worktime" [(ngModel)]="website.worktime"
+                                            class="form-control" required>
+                                        <mat-error
+                                            *ngIf="editWebsiteForm.controls['Worktime'].hasError('required') && selectedField == 'Worktime'">
+                                            Worktime is <strong>required</strong>
+                                        </mat-error>
+                                    </div>
+                                    <!--/.form-group -->
+                                </div><!-- /.col-* -->
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>logoInformation</label>
+                                        <input type="text" (focus)="onFocus('logoinformation')" (blur)="onBlur()"
+                                            name="logoinformation" formControlName="logoinformation"
+                                            [(ngModel)]="website.logoInformation" class="form-control" required>
+                                        <mat-error
+                                            *ngIf="editWebsiteForm.controls['logoinformation'].hasError('required') && selectedField == 'logoinformation'">
+                                            logo Information is <strong>required</strong>
+                                        </mat-error>
+                                    </div>
+                                    <!--/.form-group -->
+                                </div><!-- /.col-* -->
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Logo</label>
+                                        <input type="file" #file1 (change)="uploadFile(file1.files,2)" name="imgLogo"
+                                            formControlName="Logo" [(ngModel)]="oldLogo" class="form-control" >
+                                    </div>
+                                    <!--/.form-group -->
+                                </div><!-- /.col-* -->
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Home - Background</label>
+                                        <input type="file" #file (change)="uploadFile(file.files,1)" name="imgBg"
+                                            formControlName="Background" [(ngModel)]="oldBg" class="form-control"
+                                            >
+                                    </div>
+                                    <!--/.form-group -->
+                                </div><!-- /.col-* -->
+
+                                <div class="col-sm-12">
+                                    <button type="submit" [disabled]="!editWebsiteForm.valid"
+                                        class="btn btn-primary pull-right">Save</button>
+                                </div><!-- /.col-* -->
+
+                            </form>
+                        </div><!-- /.row -->
+                    </ng-template>
+
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.dashboard-content -->
+    </div><!-- /.dashboard -->
+</div><!-- /.page-wrapper -->

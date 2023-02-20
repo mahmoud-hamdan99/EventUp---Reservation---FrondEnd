@@ -1,0 +1,12 @@
+input[type="date"].form-control, input[type="time"].form-control, input[type="datetime-local"].form-control, input[type="month"].form-control {
+     line-height: normal !important; 
+}
+
+.form-control {
+    background-color: #fff;
+    border-color: #eaeaea;
+    border-radius: 3px;
+    font-size: 1.2em;
+    min-height: 41px;
+    transition: border-color .15s linear;
+}

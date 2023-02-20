@@ -1,0 +1,131 @@
+<div class="page-wrapper">
+    <app-nav-bar></app-nav-bar>
+    <div class="main-wrapper">
+        <div class="main">
+            <div class="main-inner">
+
+                <div class="content-title">
+                    <div class="content-title-inner">
+                        <div class="container">
+                            <h1>Contact Us</h1>
+
+                            <ol class="breadcrumb">
+                                <li><a href="">Home</a></li>
+                                <li><a href="contact">ContactUs</a></li>
+                            </ol>
+                        </div><!-- /.container -->
+                    </div><!-- /.content-title-inner -->
+                </div><!-- /.content-title -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-lg-9">
+                            <div class="page-subheader page-subheader-small">
+                                <h2 style="color: black;">Contact Form</h2>
+                            </div>
+
+                            <div class="row">
+                                <form [formGroup]="ContactForm" method="post">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input (focus)="onFocus('Personalname')" (blur)="onBlur()" type="text"
+                                                formControlName="Personalname" class="form-control " required>
+
+                                            <mat-error
+                                                *ngIf="ContactForm.controls['Personalname'].hasError('required') && selectedField == 'Personalname' ">
+                                                Name is <strong>required</strong>
+                                            </mat-error>
+
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-* -->
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Phone Number</label>
+                                            <input type="tel" (focus)="onFocus('Phonenumber')"
+                                                formControlName="Phonenumber" class="form-control" required>
+                                            <mat-error
+                                                *ngIf="ContactForm.controls['Phonenumber'].hasError('pattern') && !ContactForm.controls['Phonenumber'].hasError('required') && selectedField == 'Phonenumber'">
+                                                Please enter a valid phone number
+                                            </mat-error>
+                                            <mat-error
+                                                *ngIf="ContactForm.controls['Phonenumber'].hasError('required') && selectedField == 'Phonenumber'">
+                                                Phone number is <strong>required</strong>
+                                            </mat-error>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-* -->
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input (focus)="onFocus('Subject')" (blur)="onBlur()" type="text"
+                                                formControlName="Subject" class="form-control" required>
+                                            <mat-error
+                                                *ngIf="ContactForm.controls['Subject'].hasError('required') && selectedField == 'Subject'">
+                                                Subject is <strong>required</strong>
+                                            </mat-error>
+                                        </div>
+                                        <!--/.form-group -->
+                                    </div><!-- /.col-* -->
+
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Message</label>
+                                            <textarea (focus)="onFocus('Message')" (blur)="onBlur()"
+                                                class="form-control" formControlName="Message" rows="6"
+                                                placeholder="Please keep your message as simple as possible"
+                                                required></textarea>
+                                            <mat-error
+                                                *ngIf="ContactForm.controls['Message'].hasError('required') && selectedField == 'Message'">
+                                                Message is <strong>required</strong>
+                                            </mat-error>
+                                        </div><!-- /.form-control -->
+                                    </div><!-- /.col-* -->
+
+                                    <div class="col-sm-12">
+                                        <button type="submit" (click)="submit()" [disabled]="!ContactForm.valid"
+                                            class="btn btn-primary pull-right">Post Message</button>
+                                    </div><!-- /.col-* -->
+                                </form>
+                            </div><!-- /.row -->
+                        </div><!-- /.col-* -->
+
+                        <div class="col-md-4 col-lg-3">
+                            <div class="sidebar">
+                                <div class="widget">
+                                    <h2 class="widgettitle">Contact Information</h2>
+
+                                    <table style="height: 345px" class="contact">
+                                        <tbody *ngFor="let obj of websites">
+                                            <tr>
+                                                <th>Address:</th>
+                                                <td class="tdContactInfo">{{obj.address}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Phone:</th>
+                                                <td class="tdContactInfo">{{obj.telephone}}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>E-mail:</th>
+                                                <td class="tdContactInfo"><a href="{{obj.email}}">{{obj.email}}</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>Worktime:</th>
+                                                <td class="tdContactInfo">{{obj.worktime}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.widget -->
+                            </div><!-- /.sidebar -->
+                        </div><!-- /.col-* -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.main-inner -->
+        </div><!-- /.main -->
+    </div><!-- /.main-wrapper -->
+
+    <app-footer></app-footer>
+</div><!-- /.page-wrapper -->

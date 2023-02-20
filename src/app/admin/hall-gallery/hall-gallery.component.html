@@ -1,0 +1,67 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+        <app-dashboard></app-dashboard>
+        <div style="width: 75%;" class="dashboard-content">
+            <div class="container-fluid">
+                <div class="dashboard-header">
+                   
+                     <h1  class="mat-h1-v2">Hall Gallary for {{hall.singleHall.name}}</h1>
+                    <button type="submit" (click)="openAddImageDialog()" class="btn btn-primary"  style=" float: right;">Add New Image</button>
+                  
+                 
+                  	
+                </div><!-- /.dashboard-header -->
+
+
+
+                <div class="container">
+
+                    <div class="row grows">
+                        <div class="img-wraps col-md-4" *ngFor="let item of hall.Hallimages |paginate: { itemsPerPage: 6, currentPage: p }" data-gallery="gallery" >
+                            <span (click)="openDeleteImageDialog(item.imageid)" class="closes" title="Delete">×</span>
+                           
+        
+                            <img class="img-responsive img-fluid rounded" src="{{item.imageurl}}" style="margin-bottom: 10px;">
+                        </div>
+                          
+                    </div> 
+                  
+                <div class="pagination-wrapper">
+      
+        <pagination-controls  class="my-pagination"  (pageChange)="p = $event"></pagination-controls>
+                            </div>
+
+
+            <style>
+                .my-pagination /deep/ .ngx-pagination .current {
+                  background: #0BB7A5;
+                }
+               
+              </style>
+
+            </div><!-- /.container -->
+        </div><!-- /.dashboard-content -->
+    </div><!-- /.dashboard -->
+</div><!-- /.page-wrapper -->
+
+<ng-template #imageDeleteDialog>
+    <h2>Are You Sure you want to delete this image</h2>
+    <mat-dialog-actions align="end">
+      <button class="btn btn-info" mat-button mat-dialog-close="no">No</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-danger" mat-button mat-dialog-close="yes">yes</button>
+    </mat-dialog-actions>
+</ng-template>
+
+
+
+<ng-template #imageaddDialog >
+    <h2>Select the new image</h2>
+    <mat-dialog-actions >
+        <form [formGroup]="ImageForm">
+      <input formControlName="file" id="file" type="file" class="form-control" multiple (change)="onFileChange($event)">
+      <img *ngFor='let url of imagesRead'  [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+
+      <button type="submit" (click)="addimage()" class="btn btn-success">Upload</button>
+    </form>
+    </mat-dialog-actions>
+</ng-template>

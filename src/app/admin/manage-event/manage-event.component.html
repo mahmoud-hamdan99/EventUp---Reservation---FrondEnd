@@ -1,0 +1,52 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+    
+    <app-dashboard></app-dashboard>
+    <div class="dashboard-content">	
+        <div class="container-fluid">
+            <div class="dashboard-header">
+                <h1 class="mat-h1-v2">Event</h1>
+            </div><!-- /.dashboard-header -->
+            <div class="row">
+                <table class="table table-users">
+        <thead>
+    <tr>
+    
+    <th>Event Type</th>
+    <th>Hall Name</th>
+    <th>Start Date</th>
+    <th>End Dates</th>
+
+    <th>status</th>
+    <th>Number of Person</th>
+    <th class="min-width">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    <tr *ngFor="let item of event.allevent">
+        <td>{{item.eventtype}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.startdate |date:'medium'}}</td>
+        <td>{{item.enddate |date:'medium'}}</td>
+        <td>{{item.status}}</td>
+        <td>{{item.noPerson}}</td>
+
+        
+        <td class="min-width">
+            <a class="btn btn-primary" (click)="byId(item.eventid)"  ><i class="fa fa-pencil"></i>View</a>
+        </td>
+    </tr>
+  
+    </tbody>
+    </table>
+ 
+            </div><!-- /.row -->	
+
+
+    </div>
+</div>
+</div>
+</div>
+    
+    

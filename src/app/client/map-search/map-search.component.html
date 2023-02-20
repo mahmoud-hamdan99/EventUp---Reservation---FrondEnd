@@ -1,0 +1,146 @@
+<style>
+	.my-pagination /deep/ .ngx-pagination .current {
+	  background: #0BB7A5;
+	}
+   
+  </style>
+<div class="page-wrapper">
+    <app-nav-bar></app-nav-bar>
+    <div class="main-wrapper">
+        <div class="main">
+            <div class="main-inner">
+                <div class="content">
+	                <div class="container-fluid fullwidth-wrapper">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="filter filter-gray push-bottom">
+				<form method="get" action="?">
+					<div class="row">
+	<div class="col-md-4">
+		<div class="form-group">
+			<label>Hall Name</label>
+			<input type="text" name="hallname" [(ngModel)]="searchhall" (keydown)="keyDownFunctionName($event)" class="form-control">
+		</div><!-- /.form-group -->
+	</div><!-- /.col-* -->
+
+	<div class="col-md-4">
+		<div class="form-group">
+			<label>Country</label>
+			<input type="text" name="hallcountry" class="form-control" [(ngModel)]="searchcounty" (keydown)="keyDownFunctionCountry($event)">
+		</div><!-- /.form-group -->
+	</div><!-- /.col-* -->
+
+	<div class="col-md-4">
+		<div class="form-group">
+			<label>City </label>
+			<input type="text" name="hallcity"  class="form-control" [(ngModel)]="searchcity" (keydown)="keyDownFunctionCity($event)">
+		</div><!-- /.form-group -->
+	</div><!-- /.col-* -->
+
+			
+</div><!-- /.row -->
+
+				</form>
+			</div><!-- /.filter -->
+
+						
+	<div *ngFor="let item of maps.allHallLocation |paginate: { itemsPerPage: 6, currentPage: p }" class="listing-row">
+	<div  class="listing-row-inner">
+		<div class="listing-row-image" style="background-image: url('{{item.image}}');">
+			<span class="listing-row-image-links">
+				<a (click)="openHallDetails(item.id)"><i class="fa fa-search"></i> <span>View detail</span></a>
+                <a  (click)=" openEventReserve(item.id)" ><i class="fa fa-money"></i> <span>Reserve</span></a>
+
+			</span>				
+		</div>
+
+		<div class="listing-row-content">
+			<h3><a >{{item.hallname}}</a></h3>
+			<h4>${{item.price}}</h4>
+
+			<ul class="listing-row-attributes">
+				<li>
+					<strong><i class="fa fa-map-marker"></i> City</strong>
+					<span>{{item.city}}</span>
+				</li>
+
+				<li>
+					<strong><i class="fa fa-building"></i> Type</strong>
+					<span>{{item.usage}}</span>
+				</li>
+
+				<li>
+					<strong><i class="fa fa-tag"></i> sale</strong>
+					<span>{{item.sale}}</span>
+				</li>
+
+				<li>
+					<strong><i class="fa fa-users"></i> Area</strong>
+					<span>{{item.capacity}}</span>
+				</li>		
+
+				<li>
+					<strong><i class="fa fa-star"></i> Rate</strong>
+					<span>{{item.rate}}</span>
+				</li>
+
+				<li>
+					<strong><i class="fa fa-certificate"></i> Waiters</strong>
+                    <div *ngIf="item.waiters>0;then elseBlock else elseBlock1"></div>
+					<ng-template  #elseBlock >
+                        <span>Yes</span>
+                    
+                    </ng-template>
+                    <ng-template #elseBlock1 >
+                        <span>No</span>
+                      
+                       
+                    </ng-template>
+                   
+				</li>																		
+			</ul>			
+		</div><!-- /.listing-row-content -->
+	</div><!-- /.listing-row-inner -->
+</div><!-- /.listing-row -->			
+<div class="pagination-wrapper">
+      
+	<pagination-controls  class="my-pagination"  (pageChange)="p = $event"></pagination-controls>
+			</div>
+		</div><!-- /.col-* -->
+	
+
+		<div class="col-sm-6">
+                <agm-map [zoom]="5" [latitude]="29.2985" [longitude]="42.5510">
+                    <agm-marker [iconUrl]="image" 
+                     *ngFor="let item of maps.allHallLocation" [latitude]="item.latitude" [longitude]="item.longitude" >
+                        <agm-info-window [mat-dialog-close]="true"  >
+                            <div class="leaflet-popup-content-wrapper">
+                                <div class="leaflet-popup-content" style="width: 241px;">
+                                    <div class="listing-window-image-wrapper">
+                                        <a  (click)="openHallDetails(item.id)">
+                                            <div class="listing-window-image" style="background-image: url({{item.image}});">
+                                            </div><div class="listing-window-content">
+                                                <div class="info"><h2>{{item.hallname}}</h2><h3>${{item.price}}</h3>
+                                                </div>
+                                            </div>
+                                            </a>
+                                        </div>
+                                        </div>
+                        </div>
+
+
+                        </agm-info-window>
+                    </agm-marker>
+                  </agm-map>
+                
+	            </div>       
+  
+
+            </div>
+        </div>
+    </div>
+</div>
+		</div></div>
+		<br>
+		<app-footer></app-footer>
+	</div>

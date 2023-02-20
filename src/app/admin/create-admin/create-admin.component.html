@@ -1,0 +1,102 @@
+<h2 mat-dialog-title> Add New Admin </h2>
+
+<mat-dialog-content class="mat-typography">
+  <div class="content">
+    <div class="container">
+      <form [formGroup]="AddAdminForm">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label matInput formControlName="">Username</label>
+
+                  <input (focus)="onFocus('username')" (blur)="onBlur()" name="username" formControlName="username"
+                    placeholder="username" type="text" class="form-control">
+
+                  <mat-error *ngIf="AddAdminForm.controls['username'].hasError('required')&& selectedField=='username'">
+                    username is <strong>required</strong>
+                  </mat-error>
+                </div><!-- /.form-group -->
+
+                <div class="form-group">
+                  <label for="">E-mail</label>
+                  <input (focus)="onFocus('eamil')" (blur)="onBlur()" name="email" formControlName="email"
+                    placeholder="eamil" type="text" class="form-control">
+                  <mat-error
+                    *ngIf="AddAdminForm.controls['email'].hasError('email') && !AddAdminForm.controls['email'].hasError('required') && selectedField=='password'">
+                    Please enter valid email
+                  </mat-error>
+                  <mat-error *ngIf="AddAdminForm.controls['email'].hasError('required') && selectedField=='password' ">
+                    email is <strong>required</strong>
+                  </mat-error>
+                </div><!-- /.form-group -->
+
+                <div class="form-group">
+                  <label for="">Password</label>
+                  <input (focus)="onFocus('password')" (blur)="onBlur()" type="password" formControlName="password"
+                    name="password" placeholder="Password" class="form-control">
+                  <mat-error
+                    *ngIf="AddAdminForm.controls['password'].hasError('minlength') && !AddAdminForm.controls['password'].hasError('required') && selectedField=='password'">
+                    Please enter strong password
+                  </mat-error>
+                  <mat-error
+                    *ngIf="AddAdminForm.controls['password'].hasError('required') && selectedField=='password' ">
+                    password is <strong>required</strong>
+                  </mat-error>
+
+                </div><!-- /.form-group -->
+                <div class="form-group">
+                  <input type="file" #file placeholder="Choose Image" formControlName="ImgFile"
+                    (change)="uploadFile($event)" style="display:none;">
+                  <button (click)="file.click()" class="btn btn-primary"><i class="fa fa-upload"></i> Upload
+                    Image</button>
+
+                </div>
+
+
+              </div><!-- /.col-* -->
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label matInput formControlName="">firstname</label>
+
+                  <input (focus)="onFocus('firstname')" (blur)="onBlur()" name="firstname" formControlName="firstname"
+                    placeholder="firstname" type="text" class="form-control">
+
+                  <mat-error
+                    *ngIf="AddAdminForm.controls['firstname'].hasError('required')&& selectedField=='firstname'">
+                    firstname is <strong>required</strong>
+                  </mat-error>
+                </div><!-- /.form-group -->
+
+                <div class="form-group">
+                  <label for="">Last Name</label>
+                  <input (focus)="onFocus('lastname')" (blur)="onBlur()" name="lastname" formControlName="lastname"
+                    placeholder="lastname" type="text" class="form-control">
+
+                  <mat-error
+                    *ngIf="AddAdminForm.controls['lastname'].hasError('required') && selectedField=='lastname'">
+                    lastname is <strong>required</strong>
+                  </mat-error>
+                </div>
+                <div class="form-group">
+                  <label for="">BirthDate</label>
+                  <input type="date" formControlName="birthDate" class="form-control" name="birthDate"
+                    placeholder="birthDate" />
+                </div>
+              </div><!-- /.col-* -->
+            </div><!-- /.row -->
+
+          </div><!-- /.col-* -->
+        </div><!-- /.row -->
+      </form>
+    </div><!-- /.container -->
+  </div><!-- /.content -->
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="true" (click)="submit()">Save</button>
+</mat-dialog-actions>

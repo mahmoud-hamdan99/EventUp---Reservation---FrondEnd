@@ -1,0 +1,380 @@
+<style>
+  .my-pagination /deep/ .ngx-pagination .current {
+    background: #0BB7A5;
+  }
+ 
+</style>
+<div class="cover-pull-top header-transparent">
+  <div class="page-wrapper">
+    <div class="header-wrapper">
+      <div class="header header-small">
+        <div class="header-inner">
+          <div class="container">
+            <div *ngIf="websites.length>0" class="header-top">
+              <div class="header-top-inner">
+                <a class="header-logo" routerLink="/client">
+                  <img style="width: 60px;" src="{{web.createImagpath(websites[0].logopath)}}">
+                   <span  class="header-logo-text">{{websites[0].websitename}}</span> 
+                </a><!-- /.header-logo -->
+  
+    
+                
+    <div class="nav-primary-wrapper collapse navbar-toggleable-sm">
+      <ul class="nav nav-pills nav-primary">
+        <li class="nav-item nav-item-parent">
+          <a routerLink="/client" class="nav-link ">
+            Home
+          </a>	
+  
+        </li>
+    
+         <li class="nav-item nav-item-parent">
+          <a  class="nav-link ">
+            Halls
+          </a>
+    
+          <ul class="sub-menu">
+            <li><a routerLink="/client/searchmap" >Hall+Map</a></li>
+            <li><a routerLink="/client/hall">Hall  </a></li>
+            
+          </ul>			
+        </li>	
+        
+     
+
+        <li class="nav-item nav-item-parent	">
+          <a routerLink="/client/about"  class="nav-link ">
+            Aboutus
+          </a>	
+  
+        </li>
+
+        <li class="nav-item nav-item-parent	">
+          <a  routerLink="/client/contact" class="nav-link ">
+            Contactus
+          </a>	
+  
+        </li>
+        <li *ngIf="loggedIn()" class="nav-item nav-item-parent	">
+        
+          <div *ngIf="userrole=='NormalUser'" >
+            <li class="nav-item nav-item-parent">
+              <a  class="nav-link"><strong>{{username}}</strong></a>
+        
+              <ul class="sub-menu">
+               
+                <li><a routerLink="/user/profile" >Profile</a></li>
+                <li><a routerLink="/user/myreservation" >My Reservation</a></li>
+                
+              </ul>			
+            </li>
+           
+            <li class="nav-item"><a (click)="logoff()" style="cursor: pointer;" class="nav-link"><strong>Logout</strong></a></li>
+  
+          </div>
+          <div *ngIf="userrole=='Admin' || userrole=='MainAdmin'"  >
+            <li class="nav-item nav-item-parent">
+              <a   class="nav-link"><strong>Welcome,{{username}}</strong></a>
+        
+              <ul class="sub-menu">
+                <li><a   routerLink="/admin/" >Dashbored</a></li>
+                <li><a routerLink="/user/profile">Profile</a></li>
+                
+              </ul>			
+            </li>
+      
+            <li class="nav-item"><a (click)="logoff()" style="cursor: pointer;" class="nav-link"><strong>Logout</strong></a></li>
+
+
+          </div>
+        </li>
+        
+
+        <li *ngIf="!loggedIn()" class="nav-item nav-item-parent	">
+          <a routerLink="/auth/login"  class="nav-link ">
+           Login
+          </a>	
+  
+        </li>
+
+       
+        
+      
+      </ul><!-- /.nav -->
+    </div><!-- /.nav-primary -->
+    
+    
+                <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target=".nav-primary-wrapper">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                          </button>						
+              </div><!-- /.header-top-inner -->
+            </div><!-- /.header-top -->
+          </div><!-- /.container -->
+        </div><!-- /.header-inner -->
+      </div><!-- /.header -->
+    </div>
+    <div class="main-wrapper">
+     <div class="main" style="
+     padding-bottom: 0px !important;">
+      <div class="main-inner">
+        <div class="content">
+          <div class="cover">
+            <div class="cover-image" style="background-image: url('{{web.createImagpath(backgroundimg)}}');"></div><!-- /.cover-image -->
+          
+            <div class="cover-title">
+              <div class="container">
+                <div class="cover-title-inner">
+                  <h1 style="font-size: 3em;font-weight: 300;line-height: 1.4;margin: 0 -1000px 0 0;opacity: 90%;">
+                    Find Perfect Hall  <br> For Every Event</h1>
+                </div><!-- /.cover-title-inner -->
+          
+                <div class="cover-title-content">
+                  <div class="cover-title-text">
+                    Check hall in our Website
+                  </div><!-- /.cover-title-text -->
+          
+                  <a routerLink="/client/hall" class="cover-title-action">
+                    View All <i class="fa fa-chevron-right"></i>
+                  </a><!-- /.cover-title-action -->
+                </div><!-- /.cover-title-content -->
+              </div><!-- /.container -->
+            </div><!-- /.cover-title -->
+          </div>
+        
+          <div class="information-bar">
+            <div class="container">
+              <i class="fa fa-star"></i>{{websites[0].logoInformation}}
+            </div><!-- /.container -->
+          </div>
+          <div class="container">
+            <div class="page-header">
+              <h1>Make Great Events With Our Website</h1> 
+          
+            
+            </div><!-- /.page-header -->
+          
+            <div class="row">
+            <div *ngFor="let item of hall.hallRate" class="col-md-6">
+              
+              <div  class="listing-box listing-box-simple">
+            <div class="listing-box-image" style="background-image: url('{{item.imageUrl}}')">
+              <div class="listing-box-image-label"  >TOP Rate</div>
+              <div class="listing-box-image-title">
+                <h2><a >{{item.name}}</a></h2>
+                <h3>$ {{item.reservationprice}} / per Day</h3>
+              </div><!-- /.listing-box-image-title -->
+          
+              <span class="listing-box-image-links">
+                <a (click)="openHallDetails(item.hallid)" ><i class="fa fa-search"></i> <span>View detail</span></a>
+                <a  (click)=" openEventReserve(item.hallid)" ><i class="fa fa-money"></i> <span>Reserve</span></a>
+              </span>
+            </div><!-- /.listing-box-image -->			
+          </div><!-- /.listing-box -->
+            </div><!-- /.col-* -->
+          
+          
+          </div><!-- /.row -->
+          
+          <div class="row">
+            <div class="col-md-12">
+              <div class="listing-box-wrapper">
+                <div class="row">
+                  
+                    <div class="col-md-3" *ngFor="let item of hall.allHalls | paginate: {id:'paginator1', itemsPerPage: 4, currentPage: p }">
+                      <div class="listing-box">
+            <div class="listing-box-image" style="background-image: url({{item.imageUrl}})">
+              <div class="listing-box-image-label" *ngIf="item.sale>0" >SALE</div><!-- /.listing-box-image-label -->
+              
+              <span class="listing-box-image-links">
+                <a (click)="openHallDetails(item.hallid)" ><i class="fa fa-search"></i> <span>View detail</span></a>
+                <a  (click)=" openEventReserve(item.hallid)" ><i class="fa fa-money"></i> <span>Reserve</span></a>
+              </span>		
+            </div><!-- /.listing-box-image -->
+          
+            <div class="listing-box-title">
+              <h2><a >{{item.name}}</a></h2>
+              <h3>$ {{item.reservationprice}} / per Day</h3>
+            </div><!-- /.listing-box-title -->
+          
+            <div class="listing-box-content">
+              <dl>
+                <dt>Type</dt><dd>{{item.usage}}</dd>
+                <dt>Rate</dt><dd>{{item.rate}}</dd>
+                <dt>Capacity</dt><dd>{{item.capacity}}</dd>
+              </dl>
+            </div><!-- /.listing-box-cotntent -->
+          </div><!-- /.listing-box -->
+                    </div><!-- /.col-* -->
+                  
+              
+                  
+                </div><!-- /.row -->	
+              </div><!-- /.listing-box-wrapper -->
+            </div><!-- /.col-sm-* -->	
+          </div><!-- /.row -->
+          <div class="pagination-wrapper">
+      
+            <pagination-controls id="paginator1" class="my-pagination"  (pageChange)="p = $event"></pagination-controls>
+                    </div>
+            <div class="push-top">
+              <div class="background-white fullwidth">
+            <div class="boxes">
+              <div class="row">
+                <div class="col-md-6 col-lg-3">
+                  <div class="box">
+                    <div class="box-icon">
+                      <i class="fa fa-users"></i>
+                    </div><!-- /.box-icon -->
+          
+                    <div class="box-content">
+                      <h2>Number of Users</h2>
+                      <h1>{{noOfUsers}}</h1>
+                    </div><!-- /.box-content -->
+                  </div><!-- /.box -->
+                </div><!-- /.col-* -->
+          
+                <div class="col-md-6 col-lg-3">
+                  <div class="box">
+                    <div class="box-icon">
+                      <i class="fa fa-building-o"></i>
+                    </div><!-- /.box-icon -->
+        
+                    <div class="box-content">
+                      
+                      <h2>Total of Hall</h2>
+                      <h1>{{totalHalls}}</h1>
+                    </div><!-- /.box-content -->
+                  </div><!-- /.box -->
+                </div><!-- /.col-* -->
+          
+                <div class="col-md-6 col-lg-3">
+                  <div class="box">
+                    <div class="box-icon">  
+                       <i class="fa fa-diamond"></i>
+                  
+                    </div><!-- /.box-icon -->
+          
+                    <div class="box-content">
+                      <h2>Total Of Event</h2>
+                      <h1>{{noOfAcceptedEvents}}</h1>
+                    </div><!-- /.box-content -->
+                  </div><!-- /.box -->
+                </div><!-- /.col-* -->
+          
+                <div class="col-md-6 col-lg-3">
+                  <div class="box">
+                    <div class="box-icon">
+                      <i class="fa fa-star-o"></i>
+                    </div><!-- /.box-icon -->
+          
+                    <div class="box-content">
+                      <h2>Website Rate</h2>
+                      <h1>{{review.reviewAvg.avgmark}}</h1>
+                    </div><!-- /.box-content -->
+                  </div><!-- /.box -->
+                </div><!-- /.col-* -->
+              </div><!-- /.row -->
+            </div><!-- /.boxes -->
+          </div>
+          
+            </div>
+          
+            <div class="push-bottom">
+              <div class="page-header">
+            <h1>Cheapest</h1>
+          
+            
+          </div><!-- /.page-header -->
+          
+          <div class="categories">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row">
+                  <div *ngFor="let item of hall.cheapestHall" class="col-sm-4">
+                    <div class="category" style="background-image: url({{item.imageUrl}});">
+                      <a  class="category-link">
+                        <span class="category-content">
+                          <span class="category-title">{{item.name}}</span>
+                          <span class="category-subtitle">${{item.reservationprice}}</span>
+                          <span (click)="openHallDetails(item.hallid)" class="btn btn-primary">View</span>
+                        </span><!-- /.category-content -->
+                      </a>
+                    </div><!-- /.category -->
+                  </div><!-- /.col-* -->
+          
+            
+                </div><!-- /.row -->
+          
+              </div><!-- /.col-* -->
+          
+             
+            </div><!-- /.row -->
+          </div><!-- /.categories -->
+            </div>
+          </div>
+
+          <div class="page-header">
+            <h1>Testimonial</h1>
+            <div class="pagination-wrapper">
+      
+              <a  routerLink="/client/testomonial" class="btn btn-primary"  ><i class="fa fa-plus"></i>Add Opinion</a>
+                      </div>
+            
+          </div><!-- /.page-header -->
+          <div class="container" style="text-align: center;">
+          
+            
+            <figure  *ngFor="let obj of  testimonialGet | paginate: {id:'paginator', itemsPerPage: 3, currentPage: n }" class="snip1390">
+                <img src="{{obj.imageUrl}}" alt="profile-sample3" class="profile" />
+                <figcaption>
+                    <h2>{{obj.personalname}}</h2>
+        
+                    <blockquote>{{obj.feedback}}</blockquote>
+                </figcaption>
+            </figure>
+            <div class="pagination-wrapper" style="text-align: center; padding-right: 40px;">
+      
+              <pagination-controls id="paginator" class="my-pagination"  (pageChange)="n = $event"></pagination-controls>
+                      </div>
+        </div>
+
+        <div class="container">
+          <div class="call-to-action">
+        <div class="call-to-action-inner">
+          <form [formGroup]="reviewForm" method="post">
+          <div class="call-to-action-title">
+            <div class="logo-shape"></div><!-- /.logo-shape -->
+            <h1>Rate our website</h1>
+          <h2> <ngb-rating   style="font-size:3rem;color:rgb(21, 156, 156);margin-left: -12px;" formControlName="Rate"
+    [(rate)]="currentRate"></ngb-rating></h2> 
+          </div><!-- /.call-to-action-title -->
+      
+          <button  class="btn btn-primary"
+          (click)="sendReview()">Send</button>
+        </form>
+        </div><!-- /.call-to-action-inner -->
+      </div><!-- /.call-to-action -->
+      </div>
+  
+
+
+          
+         
+  
+        </div>
+        
+  
+  
+      </div>
+  
+     </div>
+    </div>
+
+  <app-footer>
+   
+  </app-footer>
+  </div>
+  </div>
+  

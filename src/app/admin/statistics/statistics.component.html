@@ -1,0 +1,222 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+        <app-dashboard></app-dashboard>
+        <div style="width: 75%;" class="dashboard-content">
+            <div class="container-fluid">
+                <div class="dashboard-header headerCH">
+                    <h1 class="h2-v2"  style="color: black;">Statistics Page</h1>
+                </div><!-- /.dashboard-header -->
+
+                
+<div class="row">
+
+                    <!--First Cards Row -->
+                    <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Users</h5>
+                                <span class="h2 font-weight-bold mb-0">{{noOfUsers}}</span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i class="fa fa-users"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Halls</h5>
+                                <span class="h2 font-weight-bold mb-0">{{totalHalls}}</span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i class="fa fa-briefcase"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Monthly Earnings</h5>
+                                <span class="h2 font-weight-bold mb-0">{{monthlyEarnings}}</span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i class="fa fa-money"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Annual Earnings</h5>
+                                <span class="h2 font-weight-bold mb-0">{{annualEarnings}}</span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i class="fa fa-money"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dashboard-subheader">
+                      <h2></h2>		
+          
+                      <div class="dashboard-subheader-actions">
+                        
+                      </div><!-- /.dashboard-subheader-actions -->
+                    </div>
+                    <div class="row">
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Total Events</h5>
+                                <span class="h2 font-weight-bold mb-0">{{noOfAllEvents}}</span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i class="fa fa-calendar-o"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Pending Events</h5>
+                                <span class="h2 font-weight-bold mb-0">{{noOfPendingEvents}}</span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i class="fa fa-hand-rock-o"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Accepted Events</h5>
+                                <span class="h2 font-weight-bold mb-0">{{noOfAcceptedEvents}}</span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i class="fa fa-thumbs-up"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-6">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">Rejected Events</h5>
+                                <span class="h2 font-weight-bold mb-0">{{noOfRejectedEvents}}</span>
+                              </div>
+                              <div class="col-auto">
+                                <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i class="fa fa-thumbs-down"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="dashboard-subheader">
+                      <h2></h2>		
+          
+                      <div class="dashboard-subheader-actions">
+                        
+                      </div><!-- /.dashboard-subheader-actions -->
+                    </div>
+                <div class="row">
+                  <!--Bar Chart -->
+              <div class="col-xl-6" >
+               <div class="dashboard-box">
+               
+                  <div >
+                <canvas id="canvas">{{chart}}</canvas>
+                     </div>
+                     <h2 style=" text-align: center;margin-top: 15px;" >Bar Chart Event</h2>
+                   </div><!-- /.dashboard-box -->
+                   
+              </div>
+                   
+              <div class="col-xl-6">
+                  <div class="dashboard-box">
+                     
+                        <!--Doghnut Chart -->
+                        <div class="row">
+                          <div class="col-sm-6" >
+                        <div style="width: 256px;height: 241px;">
+                          <canvas id="canvas1">{{chart}}</canvas>
+                        </div>
+                        <h2 style=" text-align: center;margin-top: 15px;">#Halls in every Type</h2>
+                        </div>
+                        <div class="col-sm-6">
+                          <!--Pie Chart -->
+                          <div style="width: 256px;height: 241px;">
+                            <canvas id="canvas2">{{chart}}</canvas>
+                          </div>
+                          <h2 style="
+                          text-align: center;
+                          margin-top: 15px;
+                          padding-left: 35px;
+                      "> Customers Age </h2>
+                        </div>
+                      </div>
+                  </div><!-- /.dashboard-box -->
+            </div>
+
+                
+                    
+                   
+
+                    </div>
+               
+            </div><!-- /.container -->
+        </div><!-- /.dashboard-content -->
+    </div><!-- /.dashboard -->
+</div><!-- /.page-wrapper -->

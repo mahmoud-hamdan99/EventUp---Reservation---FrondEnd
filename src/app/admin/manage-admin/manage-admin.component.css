@@ -1,0 +1,58 @@
+/* .dashboard-content {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04), transparent 120px);
+    padding: 0 15px 15px 15px;
+    width:80% !important;
+} */
+
+.btn .fa, .pricing-btn .fa {
+    color: rgba(255, 255, 255, 0.9);
+     margin: auto;
+    font-size: 1.15em;
+}
+
+
+.h1-v2 {
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+     margin: unset !important; 
+}
+
+
+.dashboard-subheader {
+    color: #666666;
+    font-weight: 400;
+    margin: 0 0 16px 0;
+}
+
+
+.mat-h1-v2 {
+    font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0px 0 -19px !important;
+}
+
+.mat-h3-v2 {
+    font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: unset !important; 
+}
+
+
+
+.mat-h1, .mat-headline, .mat-typography h1 {
+    font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0px 0px -20px !important;
+}
+  
+.mat-h3-v2 {
+    font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 9px;
+}
+
+.mat-h3-v3 {
+    font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0px 0 10px;
+}

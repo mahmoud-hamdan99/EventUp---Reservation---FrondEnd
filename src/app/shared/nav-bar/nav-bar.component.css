@@ -1,0 +1,14 @@
+.header-logo {
+    color: #323232;
+    display: block;
+    float: left;
+    font-size: 1.5em !important;
+    font-weight: 600;
+}
+
+.nav-primary .nav-item-parent > .nav-link:after {
+    -webkit-font-smoothing: antialiased;
+    content: '';
+    font-family: 'FontAwesome';
+    margin: 0 0 0 10px;
+}

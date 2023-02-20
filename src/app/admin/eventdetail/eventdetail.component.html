@@ -1,0 +1,121 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+    
+    <app-dashboard></app-dashboard>
+    <div class="dashboard-content">	
+        <div class="container-fluid">
+            <div class="dashboard-header">
+                <h1>Event Detail</h1>
+            </div><!-- /.dashboard-header -->
+
+            
+<div class="content">
+    <div class="container">
+<div class="invoice-wrapper">
+<div class="invoice">
+<div class="invoice-header clearfix">
+<div class="invoice-logo">
+    <i class="fa fa-building"></i>{{event.singelEvent.name}}
+</div><!-- /.invoice-logo -->
+
+
+</div><!-- /.invoice-header -->
+
+<div class="invoice-info">
+<div class="row">
+    <div class="col-sm-4">
+        <h4>User Information</h4>
+
+     <strong>Firstname:</strong> {{event.singelEvent.firstname}}<br>
+     <strong>Lastname:</strong>{{event.singelEvent.lastname}}<br>
+    <strong>Email: </strong> {{event.singelEvent.email}}<br>
+    </div>
+
+    <div class="col-sm-4">
+        <h4>About</h4>
+
+        <strong>Hall Name:</strong>{{event.singelEvent.name}}<br>
+        <strong>Hall Capacity:</strong>{{event.singelEvent.capacity}}<br>
+        <strong>Start Date:</strong> {{event.singelEvent.startdate|date:'short'}}<br>
+        <strong>End Date:</strong> {{event.singelEvent.enddate|date:'short'}}<br>
+    </div>
+
+    <div class="col-sm-4">
+        <h4>Payment Details</h4>
+
+        <strong>Last 4 digit of Card :</strong> {{event.singelEvent.cardnumber}}<br>
+        <strong>Card Type:</strong> {{event.singelEvent.cardtype}}<br> 
+        <strong>Card Name:</strong> {{event.singelEvent.cardname}}<br>
+        <strong>ExpMonth:</strong>  {{event.singelEvent.expMonth}}<br>
+        <strong>ExpYear:</strong>  {{event.singelEvent.expYear}}<br>
+        <strong>Country:</strong>  {{event.singelEvent.country}}<br>
+        <strong>City:</strong>  {{event.singelEvent.city}}<br>
+    </div>
+</div>
+</div><!-- /.invoice-info -->
+
+<table class="invoice-table table">
+<thead>
+<tr>
+    <th>Hall Name</th>
+    <th>Event</th>
+    <th>Number of Person</th>
+    <th>Cost Per/Day</th>
+    <th>Total</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+    <td>{{event.singelEvent.name}}</td>
+    <td>{{event.singelEvent.eventtype}}</td>
+    <td>{{event.singelEvent.noPerson}}</td>
+    <td>${{event.singelEvent.reservationprice}}</td>
+    <td>${{event.singelEvent.totalprice}}</td>
+
+</tr>
+</tbody>
+</table>
+
+<div class="invoice-summary clearfix">
+<div class="row">
+    <div *ngIf="event.singelEvent.status!='Accepted'" class="col-sm-4">
+        <button (click)="accept(event.singelEvent)"  class="btn btn-primary">Accept</button>
+        <button (click)="Reject(event.singelEvent)" class="btn btn-danger" style="
+        margin-left: 6px;">Reject</button>
+    </div>
+    <div *ngIf="event.singelEvent.status!='Accepted' then thenBlock else  elseBlock" >
+     
+    </div>
+    <ng-template  #thenBlock>
+        <div class="col-sm-4 col-sm-offset-4">
+        <dl>
+
+            <dt>Total Price :</dt>
+            <dd>$ {{event.singelEvent.totalprice}}</dd>
+        </dl>
+    </div>
+    </ng-template>
+  
+<ng-template #elseBlock>
+    <div  class="col-sm-4 col-sm-offset-8" >
+    <dl>
+
+        <dt>Total Price:</dt>
+        <dd>$ {{event.singelEvent.totalprice}}</dd>
+    </dl>
+</div>
+</ng-template><!-- /.col-* -->
+</div><!-- /.row -->
+</div><!-- /.invoice-summary -->
+</div><!-- /.invoice -->
+</div><!-- /.invoice-wrapper -->
+</div><!-- /.container -->
+</div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+

@@ -1,0 +1,160 @@
+
+	<div class="header sps--abv">
+		<div class="header-inner">
+			<div class="container">
+				<div class="header-topbar">
+					<div  class="header-topbar-left">
+						<ul *ngIf="loggedIn()" class="nav nav-pills nav-topbar">
+							<ul class="nav nav-pills nav-primary">
+							<div *ngIf="userrole=='NormalUser'" >
+								<li class="nav-item nav-item-parent">
+									<a  class="nav-link"><strong>{{username}}</strong></a>
+							  
+									<ul class="sub-menu">
+										<li><a routerLink="/user/profile">Profile</a></li>
+										<li><a routerLink="/user/myreservation">My Reservation</a></li>
+										<li><a (click)="logoff()" style="cursor: pointer;"><strong>Logout</strong></a></li>
+	
+									</ul>			
+								  </li>
+							<li class="nav-item">
+								
+
+							</li>
+
+						</div>
+					</ul>
+				
+						<ul class="nav nav-pills nav-primary">
+						
+						<div *ngIf="userrole=='Admin' || userrole=='MainAdmin'" >
+							<li class="nav-item nav-item-parent">
+							
+							<li class="nav-item nav-item-parent">
+								
+								<a class="nav-link"><strong>Welcome,{{username}}</strong></a>
+						  
+								<ul class="sub-menu">
+									<li><a routerLink="/admin/">Dashbored</a></li>
+									<li><a routerLink="/user/profile" >Profile</a></li>
+									<li><a (click)="logoff()" style="cursor: pointer;"><strong>Logout</strong></a></li>
+
+								</ul>			
+							  </li>	
+						
+
+
+						</div>
+					</ul>
+						</ul><!-- /.nav -->
+						<ul *ngIf="!loggedIn()" class="nav nav-pills nav-topbar">
+							<li class="nav-item"><a  routerLink="/auth/login"  class="nav-link"><strong>Login</strong></a></li>
+							<li class="nav-item"><a routerLink="/auth/register"  class="nav-link"><strong>Registration</strong></a></li>
+							
+						</ul><!-- /.nav -->
+					</div><!-- /.header-topbar-left -->
+
+					<div class="header-topbar-right nav-topbar nav-topbar-social">
+						<ul class="nav nav-pills">
+							<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-facebook"></i></a></li>
+							<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-twitter"></i></a></li>
+							<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-linkedin"></i></a></li>
+							<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-foursquare"></i></a></li>
+						</ul><!-- /.nav -->
+					</div><!-- /.header-topbar-right -->
+				</div><!-- /.header-topbar -->
+
+				<div class="header-top">
+					<div class="header-top-inner">
+						<a class="header-logo" routerLink="/client">
+							<img style="width: 60px;" src="{{web.createImagpath(websites[0].logopath)}}">
+							<span *ngIf="websites.length>0"  class="header-logo-text">{{websites[0].websitename}}</span>
+						</a><!-- /.header-logo -->
+
+						<div class="header-separator">
+						</div><!-- /.header-separator -->
+
+						<div class="header-search">
+							<form (keydown)="keyDownFunction($event)">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-search"></i></span>
+									<input type="text" class="form-control" [(ngModel)]="nameSearch" name="name" placeholder="Search halls by name">
+								</div><!-- /.form-group -->
+							</form>
+						</div><!-- /.header-search -->
+
+						<div class="header-information">
+							<i class="fa fa-at"></i>
+
+							<div class="header-information-block">
+								<strong>{{websites[0].email}}</strong>
+								<span>Ask Us Anything</span>
+							</div><!-- /.header-information-block -->
+						</div><!-- /.header-information -->
+
+						<div class="header-information">
+							<i class="fa fa-phone"></i>
+
+							<div class="header-information-block">
+								<strong>{{websites[0].telephone}}</strong>
+								<span>{{websites[0].worktime}}</span>
+							</div><!-- /.header-information-block -->
+						</div><!-- /.header-information -->
+
+						<button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target=".nav-primary-wrapper">
+	                        <span></span>
+	                        <span></span>
+	                        <span></span>
+	                    </button>							
+					</div><!-- /.header-top-inner -->
+				</div><!-- /.header-top -->
+
+				<div class="header-bottom">
+					<div class="header-bottom-inner">
+						
+<div class="nav-primary-wrapper collapse navbar-toggleable-sm">
+	<ul class="nav nav-pills nav-primary">
+		<li class="nav-item nav-item-parent">
+			<a routerLink="/client" class="nav-link ">
+				Home
+			</a>	
+		</li>
+
+	
+		<li class="nav-item nav-item-parent	">
+			<a  class="nav-link ">
+				Hall
+			</a>	
+			<ul class="sub-menu">				
+				<li><a routerLink="/client/searchmap" >Hall By Location</a></li>
+				<li><a routerLink="/client/hall" >Hall  </a></li>
+									
+			</ul>	
+		</li>
+		<li class="nav-item nav-item-parent">
+			<a routerLink="/client/about"  class="nav-link ">
+				Aboutus
+			</a>		
+		</li>	
+		
+
+		<li class="nav-item nav-item-parent">
+			<a routerLink="/client/contact" class="nav-link ">
+				Contactus
+			</a>
+
+		
+		</li>		
+
+																
+	</ul><!-- /.nav -->
+</div><!-- /.nav-primary -->
+
+
+					
+					</div><!-- /.header-bottom-inner -->
+				</div><!-- /.header-bottom -->
+			</div><!-- /.container -->
+		</div><!-- /.header-inner -->
+	</div><!-- /.header -->
+	

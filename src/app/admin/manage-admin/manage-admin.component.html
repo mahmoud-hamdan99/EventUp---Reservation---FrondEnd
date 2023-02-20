@@ -1,0 +1,94 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+    
+    <app-dashboard></app-dashboard>
+    
+    
+    <div class="dashboard-content">	
+        <div class="container-fluid">
+            <div class="dashboard-header">
+                <h1 class="mat-h1-v2">Admin</h1>
+                <a  (click)="openCreatedialog()" style="float: right;"  class="btn btn-primary" >Create New Admin</a>
+            </div><!-- /.dashboard-header -->
+  
+            <div class="dashboard-subheader-actions">
+                <div class="row">
+                <div class="col-lg-3 ">
+                    
+                <div class="form-group">
+                     <label>Search</label>
+                    <input type="text" name="fistname" [(ngModel)]="search" (ngModelChange)="Search()"  placeholder="Search" class="form-control">
+                    
+                </div> 
+            
+            </div>
+            
+        </div>
+            
+               
+          
+            </div>
+            <div class="row">
+                <div  class="col-md-8 col-lg-12">
+                    <div class="row">
+                 <div *ngFor="let item of user.allAdmin| paginate: { itemsPerPage: 6, currentPage: p }" class="col-md-6 col-lg-3">
+                 <div class="listing-box">
+            <div class="listing-box-image" style="background-image: url('{{item.image}}')">		
+                <a (click)="byId(item.userid)"  class="listing-box-image-link">
+                </a>		
+            </div><!-- /.listing-box-image -->
+        
+            <div class="listing-box-title">
+                <h2 class="h1-v2"><a (click)="byId(item.userid)">UserName: {{item.username}}</a></h2>
+                <h3 class="mat-h3-v2">{{item.position}}</h3>
+            </div><!-- /.listing-box-title -->
+        
+            <div class="listing-box-content">
+                <p>
+                    <!-- <strong>{{item.birthdate | date}}</strong><br> -->
+                    <i class="fa fa-at"></i> <strong> {{item.email}}</strong><br>
+                   
+                </p>
+        
+                <ul class="listing-box-social">
+                    <li><button  (click)="OpenDialog(item.userid)" class="btn btn-danger" >
+                        <i class="fa fa-trash-o"></i></button></li>
+                    <ng-template #callDeleteDialog>
+                        <h3 class="text-denger">Are You Sure you want to delete this user?</h3>
+                        <mat-dialog-actions align="end">
+                            <button  mat-button mat-dialog-close="no">No</button>
+                            <button  mat-button color="warn" mat-dialog-close="yes" >yes</button>
+                          
+                          
+                        </mat-dialog-actions>
+                        
+                        </ng-template>
+                </ul><!-- /.listing-row-social -->			
+            </div><!-- /.listing-box-cotntent -->
+        </div><!-- /.listing-box -->
+                            </div><!-- /.col-* -->
+                        
+                        
+                    </div><!-- /.row -->
+        
+                    <div class="pagination-wrapper">
+          
+        <pagination-controls  class="my-pagination"  (pageChange)="p = $event"></pagination-controls>
+                </div>
+    
+    
+            </div>
+            <style>
+                .my-pagination /deep/ .ngx-pagination .current {
+                  background: #0BB7A5;
+                }
+               
+              </style>
+        </div>
+    
+          	
+        </div><!-- /.container -->						
+    </div>
+    </div>
+    </div> 
+   

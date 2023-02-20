@@ -1,0 +1,79 @@
+<div class="page-wrapper">
+    <app-nav-bar></app-nav-bar>
+    <div class="main-wrapper">
+        <div class="main">
+            <div class="main-inner">
+
+                <div class="content-title">
+                    <div class="content-title-inner">
+                        <div class="container">
+                            <h1>testimonial</h1>
+
+                            <ol class="breadcrumb">
+                                <li><a href="">Home</a></li>
+                                <li><a href="test">testimonial</a></li>
+                            </ol>
+                        </div><!-- /.container -->
+                    </div><!-- /.content-title-inner -->
+                </div><!-- /.content-title -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-lg-12">
+                            <div class="page-subheader page-subheader-small">
+                                <h2 style="color: black;">testimonial Form</h2>
+                            </div>
+
+                            <div class="row">
+                                <form [formGroup]="TestimonialForm">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" (focus)="onFocus('Personalname')" (blur)="onBlur()"
+                                                formControlName="Personalname" class="form-control" required>
+                                            <mat-error *ngIf="TestimonialForm.controls['Personalname'].hasError('required') &&
+                                                selectedField=='Personalname'">
+                                                Name is <strong>required</strong>
+                                            </mat-error>
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.col-* -->
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Image</label>
+                                            <input type="file" class="form-control" placeholder="Choose Image"
+                                                formControlName="ImgFile" (change)="uploadFile($event)">
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Message</label>
+                                            <textarea (focus)="onFocus('Feedback')" (blur)="onBlur()"
+                                                class="form-control" formControlName="Feedback" rows="6"
+                                                placeholder="Please keep your message as simple as possible"
+                                                required></textarea>
+                                            <mat-error *ngIf="TestimonialForm.controls['Feedback'].hasError('required')&&
+                                                selectedField=='Feedback'">
+                                                Message is <strong>required</strong>
+                                            </mat-error>
+                                        </div><!-- /.form-control -->
+                                    </div><!-- /.col-* -->
+
+                                    <div class="col-sm-12">
+                                        <button (click)="submit()" class="btn btn-primary pull-right">Post </button>
+                                    </div><!-- /.col-* -->
+                                </form>
+                            </div><!-- /.row -->
+                        </div><!-- /.col-* -->
+
+
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.main-inner -->
+        </div><!-- /.main -->
+    </div><!-- /.main-wrapper -->
+
+    <app-footer></app-footer>
+</div><!-- /.page-wrapper -->

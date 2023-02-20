@@ -1,0 +1,68 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+    
+    <app-dashboard></app-dashboard>
+    
+    
+    <div class="dashboard-content">	
+        <div class="container-fluid">
+            <div class="dashboard-header">
+                <h1 class="mat-h1-v2" >Role</h1>
+            <a (click)="openAddDialogRole()" style=" float: right;" class="btn btn-primary">Add New Role</a>
+            </div><!-- /.dashboard-header -->
+            <ng-template #callAddRole>
+             <h1>Add New Role</h1>
+                <input type="text" name="position"  class="form-control" [(ngModel)]="model.position" placeholder="New Position">
+                <mat-dialog-actions align="end">
+                    <button style="margin-right: 10px;"  class="btn btn-danger"   mat-dialog-close="no">Cancel</button>
+                    <button  class="btn btn-primary" (click)="AddRole()"  mat-dialog-close="yes" >Add</button>
+                  
+                  
+                </mat-dialog-actions>
+            </ng-template>
+
+    
+            <div class="row">
+                <table class="table table-users">
+        <thead>
+    <tr>
+    <th>Position</th>
+    <th class="min-width">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    <tr *ngFor="let item of role.allRoles | paginate: { itemsPerPage: 6, currentPage: p }">
+        <td>{{item.position}}</td>
+        <td class="min-width">
+            <a (click)="openDeleteDialog(item.roleid)" class="btn btn-danger"><i class="fa fa-times"></i> Remove</a>
+        </td>
+    </tr>
+    <ng-template #callDeleteDialog>
+        <h2>Are You Sure you want to delete this role</h2>
+        <mat-dialog-actions align="end">
+            <button class="btn btn-primary"  mat-dialog-close="no">No</button>&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-danger"  mat-dialog-close="yes">yes</button>
+        </mat-dialog-actions>
+    
+    </ng-template>
+    </tbody>
+    </table>
+    <div class="pagination-wrapper">
+      
+        <pagination-controls  class="my-pagination"  (pageChange)="p = $event"></pagination-controls>
+                </div>
+
+                <style>
+                    .my-pagination /deep/ .ngx-pagination .current {
+                      background: #0BB7A5;
+                    }
+                   
+                  </style>
+    
+ 
+            </div><!-- /.row -->	
+        </div><!-- /.container -->						
+    </div>
+    </div>
+    </div>

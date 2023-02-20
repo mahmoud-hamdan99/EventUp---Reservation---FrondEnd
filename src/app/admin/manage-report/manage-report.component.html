@@ -1,0 +1,54 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+        <app-dashboard></app-dashboard>
+        <div style="width: 75%;" class="dashboard-content">
+            <div class="container-fluid">
+                <div class="dashboard-header">
+                    <h1 style="color: black;">Report Page</h1>
+                </div><!-- /.dashboard-header -->
+                <div class="spinner"></div>
+                <div style="margin-left: 15px;" class=" row">
+                    <h2 class="text-dark reportA">Report All Users </h2>
+                    
+                    <button class="btn btn-primary" (click)="downloadPdf()">Export PDF  <i class="fa fa-download"></i></button>
+
+
+                </div><!-- /.row -->
+
+                <div style="margin-top: 60px;margin-left: 3px;" class="container-fluid">
+                    <h2 class="reportA">Event Report Information Between Two Dates : </h2>
+                    <form [formGroup]="reportgroup">
+                        <label>Start Date</label>
+                        <input type="date" class="form-control" name="startDate" formControlName="startDate"
+                            placeholder=" From Date">
+                        <mat-error *ngIf="reportgroup.controls['startDate'].hasError('required') &&
+                                                                            selectedField=='startDate'">
+                            Start Date is <strong>required</strong>
+                        </mat-error>
+                        <div>
+
+                            <label>End Date</label>
+                            <input type="date" class="form-control" name="endDate" formControlName="endDate">
+                            <mat-error *ngIf="reportgroup.controls['startDate'].hasError('required') &&
+                                                                            selectedField=='startDate'">
+                                Start Date is <strong>required</strong>
+                            </mat-error>
+                        </div>
+                        <div>
+
+                        </div>
+                        <br><br>
+                        <button (click)="searchBetweenTwoDatesReport()" [disabled]="!reportgroup.valid"
+                            class="btn btn-primary">Export
+                            PDF  <i class="fa fa-download"></i></button>
+                    </form>
+
+
+
+                </div>
+
+            </div>
+            <!-- /.container -->
+        </div><!-- /.dashboard-content -->
+    </div><!-- /.dashboard -->
+</div><!-- /.page-wrapper -->

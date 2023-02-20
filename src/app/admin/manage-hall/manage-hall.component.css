@@ -1,0 +1,13 @@
+.mat-h1-v2 {
+    font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0px 0 -19px !important;
+}
+
+.ngx-gallery { display: table-cell; 
+    margin-bottom: 20px; }
+
+ .listing-box-social-v2 {
+        padding: 0;
+        text-align: center;
+    }

@@ -1,0 +1,54 @@
+<app-nav-bar></app-nav-bar>
+<div class="content-title">
+    <div class="content-title-inner">
+        <div class="container ">		
+            <h1>Profile Page</h1>		
+    
+               
+        </div><!-- /.container -->
+    </div><!-- /.content-title-inner -->
+    </div><!-- /.content-title -->
+<div class="my-profile content-area" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+<app-profileaside></app-profileaside>
+
+</div>
+
+
+
+<div class="col-lg-8 col-md-12 col-sm-12">
+    <!-- Heading -->
+    <h3 class="heading-2">Cards</h3>
+    <div class="my-properties">
+        <table class="table brd-none">
+            <thead>
+            <tr>
+                <th>Card number</th>
+               
+                <th class="hedin-div">Expired Date</th>
+                <th><span class="hedin-div">CCV</span></th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of card.userCard ">
+                <td >
+                    {{item.cardnumber}}
+                </td>
+                <td class="hedin-div">{{item.expirededate}}</td>
+                <td> <span class="hedin-div">{{item.ccv}}</span></td>
+                <td class="actions">
+                    <a (click)="deletecard(item.id)"><i class="delete fa fa-trash-o"></i></a>
+                </td>
+            </tr>
+   
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,110 @@
+<h2 mat-dialog-title> Edit Hall Section</h2>
+
+<mat-dialog-content class="mat-typography">
+  <div class="content">
+    <div class="container">
+      <form [formGroup]="editHallForm">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Hall Name</label>
+                  <input (focus)="onFocus('name')" (blur)="onBlur()" name="name" formControlName="name"
+                    placeholder="Hall name" [(ngModel)]="hall.singleHall.name" type="text" class="form-control">
+                  <mat-error *ngIf="editHallForm.controls['name'].hasError('required') && selectedField=='name' ">
+                    Name is <strong>required</strong>
+                  </mat-error>
+                </div><!-- /.form-group -->
+
+                <div class="form-group">
+                  <label for="">Capacity</label>
+                  <input (focus)="onFocus('capacity')" (blur)="onBlur()" name="capacity" formControlName="capacity"
+                    placeholder="Capacity" [(ngModel)]="hall.singleHall.capacity" type="number" class="form-control">
+                  <mat-error
+                    *ngIf="editHallForm.controls['capacity'].hasError('required') && selectedField=='capacity'">
+                    Capacity is <strong>required</strong>
+                  </mat-error>
+                </div><!-- /.form-group -->
+
+                <div class="form-group" style="margin-top: 15px;">
+                  <label>Waiters</label><br>
+                  <!-- <input name="waiters" formControlName="waiters" placeholder="Waiters" type="number" class="form-control"> -->
+                  <mat-button-toggle-group name="fontStyle" (focus)="onFocus('waiters')" (blur)="onBlur()"
+                    formControlName="waiters" [(ngModel)]="hall.singleHall.waiters" aria-label="Font Style"
+                    style="height: 35px;">
+                    <mat-button-toggle class=" btn-success" name="waiters" value="1">Yes</mat-button-toggle>
+                    <mat-button-toggle class=" btn-danger" name="waiters" value="0">No</mat-button-toggle>
+                  </mat-button-toggle-group><br>
+                  <mat-error *ngIf="editHallForm.controls['waiters'].hasError('required') &&
+                    selectedField=='waiters'">
+                    Waiters is <strong>required</strong>
+                  </mat-error>
+                </div><!-- /.form-group -->
+              </div><!-- /.col-* -->
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="">Sale</label>
+                  <input name="sale" (focus)="onFocus('sale')" (blur)="onBlur()" formControlName="sale"
+                    placeholder="Sale" [(ngModel)]="hall.singleHall.sale" type="number" class="form-control">
+                  <mat-error *ngIf="editHallForm.controls['sale'].hasError('required') && selectedField=='sale'">
+                    Sale is <strong>required</strong>
+                  </mat-error>
+                </div><!-- /.form-group -->
+
+                <div class="form-group">
+                  <label>Reservation price</label>
+                  <input (focus)="onFocus('reservationprice')" (blur)="onBlur()" name="reservationprice"
+                    formControlName="reservationprice" placeholder="Reservation Price"
+                    [(ngModel)]="hall.singleHall.reservationprice" type="number" class="form-control">
+                  <mat-error
+                    *ngIf="editHallForm.controls['reservationprice'].hasError('required')  && selectedField=='reservationprice'">
+                    Reservation price is <strong>required</strong>
+                  </mat-error>
+                </div><!-- /.form-group -->
+
+                <div class="form-group">
+                  <label for="">Usage</label>
+                  <input (focus)="onFocus('usage')" (blur)="onBlur()" name="usage" formControlName="usage"
+                    placeholder="Usage" [(ngModel)]="hall.singleHall.usage" type="text" class="form-control">
+                  <mat-error *ngIf="editHallForm.controls['usage'].hasError('required') && selectedField=='usage'">
+                    Usage is <strong>required</strong>
+                  </mat-error>
+                </div><!-- /.form-group -->
+              </div><!-- /.col-* -->
+            </div><!-- /.row -->
+            <div class="form-group">
+              <label for="">Rate</label>
+              <!-- <input name="rate" formControlName="rate" placeholder="Rate" type="number" class="form-control"> -->
+              <br>
+              <select (focus)="onFocus('rate')" (blur)="onBlur()" formControlName="rate"
+                [(ngModel)]="hall.singleHall.rate" matNativeControl required>
+                <option disabled>Select Hall Rate</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+              <mat-error *ngIf="editHallForm.controls['rate'].hasError('required')&& selectedField=='rate'">
+                Rate is <strong>required</strong>
+              </mat-error>
+            </div><!-- /.form-group -->
+
+          </div><!-- /.col-* -->
+        </div><!-- /.row -->
+      </form>
+    </div><!-- /.container -->
+  </div><!-- /.content -->
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button onMouseOver="this.style.color='#0BB7A5'" onMouseOut="this.style.color='#323232'" mat-raised-button
+    mat-dialog-close>Cancel</button>
+  <button onMouseOver="this.style.color='#0BB7A5'" onMouseOut="this.style.color='#323232'" mat-raised-button
+    [mat-dialog-close]="true" (click)="submit()">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,59 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+        <app-dashboard></app-dashboard>
+        <div style="width: 75%;" class="dashboard-content">
+            <div class="container-fluid">
+                <div class="dashboard-header">
+                    <h1 style="color: black;">Contacts Page</h1>
+                </div><!-- /.dashboard-header -->
+
+                <div class="row">
+                    <table class="table table-hover table-striped table-users">
+                        <thead>
+                            <tr >
+
+                                <th>Fullname</th>
+                                <th>Phone Number</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th class="min-width" style="text-align: center;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let obj of contacts | paginate: { itemsPerPage: 10, currentPage: p }">
+                                <td>{{obj.personalname}}</td>
+                                <td>{{obj.phonenumber}}</td>
+                                <td>{{obj.subject}}</td>
+                                <td>{{obj.message}}</td>
+                                <td class="min-width">
+                                    <a (click)="openDeleteDialog(obj.contactusid)" class="btn btn-danger"><i
+                                            class="fa fa-times"></i> Remove</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="pagination-wrapper">
+
+                        <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+                    </div><!-- /.pagination-wrapper -->
+                </div><!-- /.row -->
+                <style>
+                    .my-pagination /deep/ .ngx-pagination .current {
+                        background: #0BB7A5;
+                    }
+                </style>
+            </div><!-- /.container -->
+        </div><!-- /.dashboard-content -->
+    </div><!-- /.dashboard -->
+</div><!-- /.page-wrapper -->
+
+
+<ng-template #callDeleteDialog>
+    <h2>Are You Sure you want to delete this item</h2>
+    <mat-dialog-actions align="end">
+        <button class="btn btn-info" mat-button mat-dialog-close="no">No</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger" mat-button mat-dialog-close="yes">yes</button>
+    </mat-dialog-actions>
+
+</ng-template>

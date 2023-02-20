@@ -1,0 +1,252 @@
+<div class="page-wrapper">
+  <app-nav-bar></app-nav-bar>
+  <div class="main-wrapper">
+    <div class="main">
+      <div class="main-inner">
+
+        <div class="content-title">
+          <div class="content-title-inner">
+            <div class="container">
+              <h1>Event Reserve</h1>
+
+              <ol class="breadcrumb">
+                <li><a href="">Home</a></li>
+                <li><a href="client/">Event Reserve</a></li>
+              </ol>
+            </div><!-- /.container -->
+          </div><!-- /.content-title-inner -->
+        </div><!-- /.content-title -->
+
+
+        <div class="container">
+
+          <form [formGroup]="addEventForm">
+            <div class="col-md-8 col-lg-9">
+              <div class="content">
+
+                <div class="page-header page-header-small">
+                  <h3>Basic Information</h3>
+                </div><!-- /.page-header -->
+
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Event type</label>
+                      <input (focus)="onFocus('Eventtype')" (blur)="onBlur()" type="text" formControlName="Eventtype"
+                        class="form-control">
+                      <mat-error
+                        *ngIf="addEventForm.controls['Eventtype'].hasError('required')&& selectedField=='Eventtype'">
+                        Event type is<strong> required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-users" aria-hidden="true"></i> Number of preson</label>
+                      <input (focus)="onFocus('NoPerson')" (blur)="onBlur()" type="number" class="form-control"
+                        formControlName="NoPerson" [max]="hall.singleHall.capacity" [min]="0">
+                      <mat-error
+                        *ngIf="addEventForm.controls['NoPerson'].hasError('max')&& !addEventForm.controls['NoPerson'].hasError('required')">
+                        more than<strong> capacity of hall</strong>
+                      </mat-error>
+                      <mat-error
+                        *ngIf="addEventForm.controls['NoPerson'].hasError('required') && selectedField=='NoPerson'">
+                        capacity is<strong> required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div>
+
+
+                </div>
+
+
+                <div class="page-header page-header-small">
+                  <h3>Date Information</h3>
+                </div><!-- /.page-header -->
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Start Date</label>
+                      <input (focus)="onFocus('Startdate')" (blur)="onBlur()" type="datetime-local"
+                        formControlName="Startdate" #startdate class="form-control">
+                      <mat-error
+                        *ngIf="addEventForm.controls['Startdate'].hasError('required') && selectedField=='Startdate'">
+                        Start date is<strong> required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-calendar-check-o" aria-hidden="true"></i> End Date</label>
+                      <input (focus)="onFocus('Enddate')" (blur)="onBlur()" type="datetime-local"
+                        formControlName="Enddate" #enddate (change)="totalDate(enddate.value,startdate.value)"
+                        (change)="calTotalPrice(hall.singleHall.reservationprice,hall.singleHall.sale)" class="form-control">
+                      <mat-error
+                        *ngIf="addEventForm.controls['Enddate'].hasError('required') && selectedField=='Enddate'">
+                        End date is<strong> required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+
+                </div><!-- /.row -->
+
+                <div class="page-header page-header-small">
+                  <h3>Payment Information
+
+                    <div class="icon-container" style="float: right;">
+                      <i class="fa fa-cc-visa" style="color:navy;"></i>
+                      <i class="fa fa-cc-amex" style="color:blue;"></i>
+                      <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                      <i class="fa fa-cc-discover" style="color:orange;"></i>
+                    </div>
+                  </h3>
+
+                </div><!-- /.page-header -->
+
+                <div class="row">
+
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label> <i class="fa fa-user"></i> Full Name </label>
+                      <input (focus)="onFocus('fullname')" (blur)="onBlur()" type="text" formControlName="fullname"
+                        placeholder="John M.Doe" class="form-control">
+                      <mat-error
+                        *ngIf="addEventForm.controls['fullname'].hasError('required') && selectedField=='fullname'">
+                        full Name is<strong> required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-globe" aria-hidden="true"></i> Country</label>
+                      <input (focus)="onFocus('country')" (blur)="onBlur()" type="text" formControlName="country"
+                        placeholder="Jordan" class="form-control">
+                      <mat-error
+                        *ngIf="addEventForm.controls['country'].hasError('required') && selectedField=='country'">
+                        Country is<strong> required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-institution"></i> City</label>
+                     <input (focus)="onFocus('Subject')" (blur)="onBlur()"
+                        type="text" formControlName="city" placeholder="Amman"
+                      class="form-control">
+                      <mat-error *ngIf="addEventForm.controls['city'].hasError('required') && selectedField=='city'">
+                        city is<strong> required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-user"></i> Name on Card</label>
+                      <input (focus)="onFocus('Cardname')" (blur)="onBlur()" type="text" formControlName="Cardname"
+                        class="form-control" placeholder="John More Doe">
+                      <mat-error
+                        *ngIf="addEventForm.controls['Cardname'].hasError('required') && selectedField=='Cardname'">
+                        Card Name is<strong> required</strong>
+                      </mat-error>
+
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-credit-card" aria-hidden="true"></i> Credit card number</label>
+                      <input (focus)="onFocus('Cardnumber')" (blur)="onBlur()" type="text" formControlName="Cardnumber"
+                        class="form-control" placeholder="1111-2222-3333-4444">
+                      <mat-error
+                        *ngIf="addEventForm.controls['Cardnumber'].hasError('required')&& selectedField=='Cardnumber'">
+                        Card Number is<strong> required</strong>
+                      </mat-error>
+                      <mat-error
+                        *ngIf="addEventForm.controls['Cardnumber'].hasError('pattern')&& !addEventForm.controls['Cardnumber'].hasError('required')&& selectedField=='Cardnumber'">
+                        Enter a vaild <strong> card </strong></mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-calendar" aria-hidden="true"></i> Exp Date</label>
+                      <input (focus)="onFocus('Expirededate')" (blur)="onBlur()" type="date"
+                        formControlName="Expirededate" class="form-control">
+                      <mat-error
+                        *ngIf="addEventForm.controls['Expirededate'].hasError('required')&& selectedField=='Expirededate'">
+                        Expired date is<strong>required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label><i class="fa fa-lock" aria-hidden="true"></i> CVV</label>
+                      <input (focus)="onFocus('ccv')" (blur)="onBlur()" type="text" formControlName="ccv"
+                        class="form-control" placeholder="352">
+                      <mat-error *ngIf="addEventForm.controls['ccv'].hasError('required')&& selectedField=='ccv'">
+                        CVV is<strong> required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+
+                </div><!-- /.row -->
+                <div class="center">
+                  <button (click)="submit()" [disabled]="!addEventForm.valid" class="btn btn-primary">Submit </button>
+                </div><!-- /.center -->
+
+              </div><!-- /.content -->
+            </div><!-- /.col-* -->
+            <div class="col-md-4 col-lg-3">
+              <div class="sidebar">
+                <div class="widget">
+                  <h3 class="widgettitle">Image</h3>
+                  <img style="
+              width: 250px;" src="{{hall.singleHall.imageUrl}}">
+                </div>
+                <div class="widget">
+                  <h3 class="widgettitle">Summary Price</h3>
+                  <div class="mortgage-calculator">
+                    <div class="form-group">
+                      <label>Hall Name</label>
+                      <input type="text" class="form-control" [value]="hall.singleHall.name" readonly>
+                    </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                      <label>Hall Capacity</label>
+                      <input type="text" class="form-control" [value]="hall.singleHall.capacity" readonly>
+                    </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                      <label>Hall Price/Day</label>
+                      <input type="text" class="form-control" [value]="hall.singleHall.reservationprice" readonly>
+                    </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                      <label>Total Reserve hours</label>
+                      <p class="form-control-static center">{{totalhours}}</p>
+                    </div><!-- /.form-group -->
+
+                    <div class="form-group">
+                      <label>Total Reserve days</label>
+                      <p class="form-control-static center">{{totalDays}}</p>
+                    </div><!-- /.form-group -->
+                    <div class="form-group">
+                      <label>Total Payment</label>
+                      <p class="form-control-static center">$ {{totalPrice}}</p>
+                    </div><!-- /.form-group -->
+
+                  </div>
+                </div><!-- /.widget -->
+
+
+              </div><!-- /.sidebar -->
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

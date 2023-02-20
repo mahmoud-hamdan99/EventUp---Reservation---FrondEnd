@@ -1,0 +1,59 @@
+<app-nav-bar></app-nav-bar><br><br>
+<div class="content-title">
+    <div class="content-title-inner">
+        <div class="container ">
+            <h1>Profile Page</h1>
+
+        </div>
+        <!-- /.container -->
+    </div><!-- /.content-title-inner -->
+ 
+
+</div><!-- /.content-title -->
+<div class="my-profile content-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <app-profileaside></app-profileaside>
+
+            </div>
+
+            <div class="col-lg-8 col-md-12 col-sm-12">
+                <!-- Heading -->
+
+                <div class="my-properties">
+                    <table style="background-color: white;" class="table  table-hover  table-active">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>event type</th>
+                                <th>Hall Name</th>
+                                <th>start date</th>
+                                <th>end date</th>
+                                <th>status</th>
+                                <th>totalprice</th>
+                                <th>Number of Person</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of user.userevent ">
+
+                                <td><img style="width: 78px;border-radius: 50px; " src="{{item.imageUrl}}"></td>
+                                <td>{{item.eventtype}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.startdate|date:"short"}}</td>
+                                <td>{{item.enddate|date:"short"}}</td>
+                                <td> {{item.status}}</td>
+                                <td> {{item.totalprice}}</td>
+                                <td> {{item.noPerson}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

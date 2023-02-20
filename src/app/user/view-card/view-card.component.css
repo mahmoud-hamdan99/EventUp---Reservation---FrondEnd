@@ -1,0 +1,170 @@
+/** MY PROPERTIES  STARTED **/
+.my-account-box {
+    margin-bottom: 30px;
+}
+
+.my-address {
+    margin-bottom: 30px;
+}
+.content-title {
+    background-color: #fff;
+    background-image: linear-gradient(to right, #08877a, #0ee7d0);
+    margin: 0px 0 60px 0;
+}
+
+.my-properties table {
+    width: 100% !important;
+    margin-bottom: 10px;
+}
+
+.my-properties table thead tr th {
+    background: #f9f9f8;
+    border: none;
+    font-weight: 400;
+    padding: 10px 10px 10px 0;
+    font-size: 14px;
+}
+
+.my-properties table thead tr th:first-child {
+    padding-left: 30px;
+}
+
+.my-properties table tbody tr td {
+    border-top: none;
+    border-bottom: 1px solid #f3f3f3;
+    padding: 20px 20px 20px 0;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #555;
+}
+
+.my-properties table .inner a {
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.my-properties table .inner h5 {
+    margin-bottom: 5px;
+}
+
+.my-properties table tbody tr td.image {
+    width: 120px;
+}
+
+.my-properties table tbody tr td.image img {
+    border-radius: 2px;
+}
+
+.my-properties table tbody tr td.actions .edit {
+    float: left;
+}
+
+.my-properties table tbody tr td .inner figure {
+    margin: 0 0 5px;
+    font-size: 13px;
+    color: #555;
+}
+
+.my-properties table tbody tr td .inner figure i {
+    font-size: 13px;
+}
+
+.my-properties table tbody tr td .price-month {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+}
+
+.my-properties table tbody tr td.actions {
+    text-align: right;
+}
+
+.my-properties table tbody tr td.actions .edit i {
+    -moz-transition: 0.4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    margin-right: 5px;
+}
+
+.my-properties table tbody tr td.actions a {
+    padding: 0;
+    color: #555;
+}
+
+.my-properties table tbody tr td:last-child {
+    padding-right: 5px;
+}
+
+.my-properties table tbody .brd-none td {
+    border: none;
+}
+
+.footer .listing-meta span a {
+    text-decoration: none;
+    float: right;
+    margin-left: 15px;
+    color: #525252;
+}
+
+.footer .listing-meta span a i {
+    margin-right: 4px;
+}
+
+.footer .listing-meta span a:hover {
+    color: #8c8c8c;
+}
+
+.heading {
+    margin: 0 0 30px;
+    /* font-size: 20px; */
+    font-weight: 600;
+}
+
+.heading-2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+/** typography 2 start **/
+.typography-2 .heading {
+    margin: 0 0 15px;
+}
+
+.typography-2 .sd p {
+    margin-bottom: 40px;
+}
+
+.hr-title.hr-long {
+    width: 50%;
+    margin: 20px auto 20px;
+}
+
+.hr-title {
+    border-top-style: solid;
+    border-top-width: 1px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 20px;
+    margin: 10px 0;
+    height: auto;
+    color: #bbb;
+}
+
+.typography-2 address {
+    margin-bottom: 20px;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 26px;
+    color: #555;
+}
+
+.typography-2 .space {
+    width: 100%;
+    display: block;
+    clear: both;
+    height: 20px;
+    position: relative;
+    border-top: none;
+}

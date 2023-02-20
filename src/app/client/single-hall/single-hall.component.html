@@ -1,0 +1,116 @@
+<div class="page-wrapper">
+    <app-nav-bar></app-nav-bar>
+    <div class="main-wrapper">
+	    <div class="main">
+	        <div class="main-inner">
+	        		        
+					<div class="content-title">
+	<div class="content-title-inner">
+		<div class="container">		
+			<h1>Hall details</h1>		
+
+			<ol class="breadcrumb">
+				<li><a href="">Home</a></li>
+				<li><a href="client/hallDetails">Hall-details</a></li>
+			</ol>			
+		</div><!-- /.container -->
+	</div><!-- /.content-title-inner -->
+</div><!-- /.content-title -->
+
+
+<div class="content">
+    <div class="container">
+<div class="row">
+    
+
+
+<div class="col-md-12 col-lg-12">
+<ul class="nav nav-tabs nav-tabs-items-3" role="tablist">
+<li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#property-description">Basic Information</a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" (click)="submit()" data-toggle="tab" href="#property-gallery">Gallery</a>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" (click)="getlocation()" data-toggle="tab" href="#property-map">Map</a>
+</li>
+<!-- 
+<li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#property-reviews">Reviews</a>
+</li>		 -->
+</ul>
+
+<div class="tab-content listing-detail">
+<div class="tab-pane active" id="property-description" role="tabpanel">
+
+
+        <div class="gallery-item" style="background-image: url({{hall.singleHall.imageUrl}});">
+        </div><!-- /.gallery-item -->                           
+
+<div style="margin-left: 200px;" class="row">            
+<div class="col-lg-8">
+<div class="overview">
+<h2 style="text-align: center;">Hall Information</h2>
+
+<ul>
+<li><strong>Name</strong><span>{{hall.singleHall.name}}</span></li>
+<li><strong>Price</strong><span>$ {{hall.singleHall.reservationprice}}</span></li>
+<li><strong>Capacity</strong><span>{{hall.singleHall.capacity}} <i class="fa fa-user"></i></span></li>
+<li><strong>Usage</strong><span>{{hall.singleHall.usage}}</span></li>
+<li><strong>Waiters</strong>
+    <div  *ngIf="hall.singleHall.waiters>0; then elseBlock else elseBlock1"></div>
+   
+    <ng-template #elseBlock> <span>Yes</span></ng-template>
+    <ng-template #elseBlock1><span>no</span></ng-template>
+</li>
+<ng-template #elseBlock1><dd>No</dd></ng-template>
+<li><strong>Rate</strong><span>{{hall.singleHall.rate}} <i class="fa fa-star"></i></span></li>       
+<li style="text-align: center;"><a (click)=" openEventReserve(hall.singleHall.hallid)" class="btn btn-primary"><i class="fa fa-money"></i> Reserve</a></li>             
+</ul>
+</div><!-- /.overview -->
+</div><!-- /.col-* -->
+
+
+</div>
+</div><!-- /.tab-pane -->
+
+<div class="tab-pane" id="property-map" role="tabpanel" >
+
+  <agm-map [zoom]="8" [latitude]="this.hall.HallLocation.latitude" [longitude]="this.hall.HallLocation.longitude">
+    <agm-marker [latitude]="this.hall.HallLocation.latitude" [longitude]="this.hall.HallLocation.longitude" ></agm-marker>
+  </agm-map>
+
+
+</div><!-- /.tab-pane -->
+<div class="tab-pane" id="property-gallery" role="tabpanel">
+
+    <div class="container">
+        <div class="row grows">
+          
+            <a *ngFor="let item of hall.Hallimages"  data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+              <img src="{{item.imageurl}}" class="img-fluid rounded" style="margin-bottom: 10px;">
+            </a>
+          
+        </div>
+
+        
+    </div>
+
+</div><!-- /.tab-pane -->
+					
+</div><!-- /.tab-content -->
+</div><!-- /.col-* -->
+
+</div><!-- /.row -->
+</div><!-- /.container -->
+</div><!-- /.content -->
+
+
+</div><!-- /.main-inner -->
+</div><!-- /.main -->
+</div><!-- /.main-wrapper -->
+<app-footer></app-footer>
+</div><!-- /.page-wrapper -->

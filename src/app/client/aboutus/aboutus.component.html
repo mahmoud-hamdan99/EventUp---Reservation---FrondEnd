@@ -1,0 +1,92 @@
+<div class="page-wrapper">
+	<app-nav-bar></app-nav-bar>
+	<div class="main-wrapper">
+		<div class="main">
+			<div class="main-inner">
+
+				<div class="content-title">
+					<div class="content-title-inner">
+						<div class="container">
+							<h1>AboutUs</h1>
+
+							<ol class="breadcrumb">
+								<li><a href="">Home</a></li>
+								<li><a href="about">AboutUs</a></li>
+							</ol>
+
+						</div><!-- /.col-* -->
+
+					</div><!-- /.container -->
+				</div><!-- /.content-title-inner -->
+			</div><!-- /.content-title -->
+			<div class="content">
+				<div >
+<img style="
+width: 70%;
+display: block;
+margin-left: auto;
+margin-right: auto;
+border-radius: 25px;
+height: 450px;
+" src="{{aboutusService.createImagpath(abouts[0].imagepath)}}">
+
+            </div>
+
+
+<hr>
+
+
+<div class="container">
+<div class="row">	
+	<div class="col-md-8 col-lg-9">
+		<div class="page-subheader page-subheader-small">
+			<h1 class="mat-h1-v2 ">About Our website </h1>
+		</div>
+
+		<div class="row">
+		<h3>
+			{{abouts[0].description}}
+		</h3>
+		</div><!-- /.row -->
+	</div><!-- /.col-* -->
+
+	<div class="col-md-4 col-lg-3">
+		<div class="sidebar">    			
+			<div class="widget">
+<h1 class="mat-h1-v3">Website Information</h1>
+
+<table class="contact">
+	<tbody *ngFor="let obj of websites">
+		<tr>
+			<th>Address:</th>
+			<td><strong>{{obj.address}}</strong></td>
+		</tr>
+
+		<tr>
+			<th>Phone:</th>
+			<td><strong>{{obj.telephone}}</strong></td>
+		</tr>
+
+		<tr>
+			<th>E-mail:</th>
+			<td><strong>{{obj.email}}</strong></td>
+		</tr>
+
+		<tr>
+			<th>Worktime:</th>
+			<td><strong>{{obj.worktime}}</strong></td>
+		</tr>
+	</tbody>
+</table>	
+</div><!-- /.widget -->
+		</div><!-- /.sidebar -->
+	</div><!-- /.col-* -->
+</div><!-- /.row -->    	
+</div><!-- /.container -->
+			</div>
+
+		
+
+
+			<app-footer></app-footer>
+		</div><!-- /.page-wrapper -->

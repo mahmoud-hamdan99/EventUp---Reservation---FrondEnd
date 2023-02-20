@@ -1,0 +1,13 @@
+
+.mat-h1-v2 {
+    font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 -20px !important;
+}
+agm-map {
+    height: 300px;
+  }
+
+  .page-header.page-header-small {
+    padding: 8px 0 12px 0 !important;
+}

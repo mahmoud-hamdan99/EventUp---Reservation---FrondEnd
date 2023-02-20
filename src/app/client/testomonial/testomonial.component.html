@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <figure *ngFor="let obj of   testimonialGet" class="snip1390">
+        <img src="{{obj.imageUrl}}" alt="profile-sample3" class="profile" />
+        <figcaption>
+            <h2>{{obj.personalname}}</h2>
+
+            <blockquote>{{obj.feedback}}</blockquote>
+        </figcaption>
+    </figure>
+
+</div>

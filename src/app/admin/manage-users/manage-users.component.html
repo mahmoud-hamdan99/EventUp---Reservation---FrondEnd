@@ -1,0 +1,87 @@
+<div class="page-wrapper">
+<div class="dashboard-wrapper">
+
+<app-dashboard></app-dashboard>
+
+
+<div class="dashboard-content">	
+
+    <div class="container-fluid">
+        <div class="dashboard-header">
+            <h1 class="mat-h1-v2">Users</h1>
+            <h3 class="mat-h3-v3 " style="float: right;margin-top: 20px;">All Normal User in System</h3>
+          
+        </div><!-- /.dashboard-header -->
+      
+        <div class="dashboard-subheader">
+                		
+    
+            <div class="dashboard-subheader-actions">
+                <div class="row">
+                <div class="col-lg-3 ">
+                    
+                <div class="form-group">
+                     <label>Search</label>
+                    <input type="text" name="fistname" [(ngModel)]="search" (ngModelChange)="Search()"  placeholder="Search" class="form-control">
+                    
+                </div> 
+            
+            </div>
+            
+        </div>
+            
+               
+          
+            </div><!-- /.dashboard-subheader-actions -->
+        </div><!-- /.dashboard-header -->
+
+        <div class="row">
+            <div  class="col-md-8 col-lg-12">
+                <div class="row">
+             <div *ngFor="let item of user.allUser| paginate: { itemsPerPage: 8, currentPage: p }" class="col-md-6 col-lg-3">
+             <div class="listing-box">
+        <div class="listing-box-image" style="background-image: url('{{item.image}}')">		
+            <a (click)="byId(item.userid)"  class="listing-box-image-link">
+            </a>		
+        </div><!-- /.listing-box-image -->
+    
+        <div class="listing-box-title">
+            <h2 class="h1-v2"><a  (click)="byId(item.userid)" >{{item.username}}</a></h2>
+            <h3 class="mat-h3-v2">{{item.position}}</h3>
+        </div><!-- /.listing-box-title -->
+    
+        <div class="listing-box-content">
+            <p>
+                <!-- <strong>{{item.birthdate | date}}</strong><br> -->
+                <i class="fa fa-at"></i> <strong> {{item.email}}</strong><br>
+               
+            </p>
+    
+            			
+        </div><!-- /.listing-box-cotntent -->
+    </div><!-- /.listing-box -->
+                        </div><!-- /.col-* -->
+                    
+                    
+                </div><!-- /.row -->
+    
+                <div class="pagination-wrapper">
+      
+    <pagination-controls  class="my-pagination"  (pageChange)="p = $event"></pagination-controls>
+            </div>
+
+
+        </div>
+        <style>
+            .my-pagination /deep/ .ngx-pagination .current {
+              background: #0BB7A5;
+            }
+           
+          </style>
+    </div>
+    
+    <!-- /.container -->			
+  		
+</div>
+</div>
+</div>

@@ -1,0 +1,138 @@
+/** MY PROFILE AREA START **/
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #555;
+}
+.my-account-box {
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.my-account-box ul li a {
+    border-bottom: 1px solid #f5f5f5;
+    padding: 12px 20px 12px 20px;
+    width: 100%;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    color: #555;
+}
+
+.my-account-box ul li a i {
+    margin-right: 7px;
+}
+
+.my-address form .form-group {
+    margin-bottom: 20px;
+}
+
+.my-address form .input-text {
+    width: 100%;
+    padding: 10px 17px;
+    font-size: 15px;
+    border: 1px solid #eee;
+    outline: none;
+    height: 45px;
+    border-radius: 3px;
+    line-height: 30px;
+}
+
+.my-address form .input-text:focus {
+    border: 1px solid #eee;
+}
+
+.my-address form textarea {
+    min-height: 150px;
+}
+
+.my-address form label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 400 !important;
+    font-size: 15px;
+    color: #555;
+}
+
+.my-address {
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-profile-photo {
+    position: relative;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.edit-profile-photo img {
+    width: 100%;
+}
+
+.change-photo-btn {
+    display: inline-block;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    left: 0;
+}
+
+.photoUpload {
+    position: relative;
+    padding: 8px 20px;
+    font-size: 13px;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #333;
+    max-width: 140px;
+    margin: 0 auto;
+}
+
+.photoUpload span {
+    color: #fff;
+    font-weight: 400;
+}
+
+.photoUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.my-account-box {
+    margin-bottom: 30px;
+}
+
+.my-address {
+    margin-bottom: 30px;
+}
+
+.content-title {
+    background-color: #fff;
+    background-image: linear-gradient(to right, #08877a, #0ee7d0);
+    margin: 0px 0 60px 0;
+}
+
+.photoUpload {
+    position: relative;
+    padding: 8px 20px;
+    font-size: 13px;
+    border-radius: 50px;
+    background-color: #fff;
+    
+    color: #333;
+    max-width: 140px;
+    margin: 0 auto;
+}
+
+.photoUpload {
+    background: #099183;
+}

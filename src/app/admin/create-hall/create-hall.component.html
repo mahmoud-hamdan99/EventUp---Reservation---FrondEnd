@@ -1,0 +1,177 @@
+<div class="page-wrapper">
+  <div class="dashboard-wrapper">
+
+    <app-dashboard></app-dashboard>
+    <div class="dashboard-content">
+      <div class="dashboard-header">
+        <h1 class="mat-h1-v2">Add New Hall</h1>
+      </div>
+      <div class="content">
+        <div class="ccontainer-fluid">
+          <form [formGroup]="addHallForm">
+            <div class="col-md-8 col-lg-12">
+              <div class="content">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Hall Name</label>
+                      <input (focus)="onFocus('name')" (blur)="onBlur()" name="name" formControlName="name"
+                        placeholder="Hall name" type="text" class="form-control">
+                      <mat-error *ngIf="addHallForm.controls['name'].hasError('required') && selectedField=='name'">
+                        Name is <strong>required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="">Capacity</label>
+                      <input name="capacity" (focus)="onFocus('capacity')" (blur)="onBlur()" formControlName="capacity"
+                        placeholder="Capacity" type="number" class="form-control">
+                      <mat-error *ngIf="addHallForm.controls['capacity'].hasError('required') &&
+                        selectedField=='capacity'">
+                        Capacity is <strong>required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div>
+
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Reservation price</label>
+                      <input (focus)="onFocus('reservationprice')" (blur)="onBlur()" name="reservationprice"
+                        formControlName="reservationprice" placeholder="Reservation Price" type="number"
+                        class="form-control">
+                      <mat-error *ngIf="addHallForm.controls['reservationprice'].hasError('required') &&
+                        selectedField=='reservationprice'">
+                        Reservation price is <strong>required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div>
+                </div><!-- /.row -->
+
+                <div class="page-header page-header-small">
+                  <h3>More Information</h3>
+                </div><!-- /.page-header -->
+
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="">Usage</label>
+                      <input (focus)="onFocus('usage')" (blur)="onBlur()" name="usage" formControlName="usage"
+                        placeholder="Usage" type="text" class="form-control">
+                      <mat-error *ngIf="addHallForm.controls['usage'].hasError('required') && selectedField=='usage'">
+                        Usage is <strong>required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="">Sale</label>
+                      <input name="sale" (focus)="onFocus('sale')" (blur)="onBlur()" formControlName="sale"
+                        placeholder="Sale" type="number" class="form-control">
+                      <mat-error *ngIf="addHallForm.controls['sale'].hasError('required')&& selectedField=='sale'">
+                        Sale is <strong>required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+
+
+
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label for="">Rate</label>
+                      <select formControlName="rate" class="form-control" matNativeControl required>
+                        <option disabled>Select Hall Rate</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                      </select>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+
+                  <div class="col-sm-8">
+                    <div class="form-group">
+
+                      <label>Hall Image</label>
+                      <input formControlName="file" id="file" type="file" class="form-control" multiple
+                        (change)="onFileChange($event)">
+                      <img *ngFor='let url of imagesRead' [src]="url" height="150" width="200px" style="margin: 3px;">
+                      <br />
+
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Waiters</label><br>
+                      <mat-button-toggle-group name="fontStyle" formControlName="waiters" aria-label="Font Style"
+                        style="height: 35px;">
+                        <mat-button-toggle class=" btn-success" name="waiters" value="1">Yes</mat-button-toggle>
+                        <mat-button-toggle class=" btn-danger" name="waiters" value="0">No</mat-button-toggle>
+                      </mat-button-toggle-group><br>
+                      <mat-error *ngIf="addHallForm.controls['waiters'].hasError('required')">
+                        Waiters is <strong>required</strong>
+                      </mat-error>
+                    </div><!-- /.form-group -->
+                  </div><!-- /.col-* -->
+
+
+                </div>
+
+
+
+
+                <div class="page-header page-header-small">
+                  <h3>Location</h3>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="">Country</label>
+                        <input (focus)="onFocus('Country')" (blur)="onBlur()" name="Country" formControlName="Country"
+                          placeholder="Country" type="text" class="form-control">
+                        <mat-error
+                          *ngIf="addHallForm.controls['Country'].hasError('required') && selectedField=='Country'">
+                          Country is <strong>required</strong>
+                        </mat-error>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label for="">City</label>
+                        <input (focus)="onFocus('City')" (blur)="onBlur()" name="City" formControlName="City"
+                          placeholder="City" type="text" class="form-control">
+                        <mat-error *ngIf="addHallForm.controls['City'].hasError('required') && selectedField=='City'">
+                          City is <strong>required</strong>
+                        </mat-error>
+                      </div>
+                    </div>
+                  </div>
+                  <agm-map [latitude]="latitude" [longitude]="longitude" (mapReady)="mapClick($event)">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+                  </agm-map>
+                </div><!-- /.page-header -->
+
+
+
+
+
+                <div class="center">
+                  <a (click)="submit()" value="Add Hall" class="btn btn-primary">Submit</a>
+                </div><!-- /.center -->
+              </div><!-- /.content -->
+            </div>
+          </form>
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

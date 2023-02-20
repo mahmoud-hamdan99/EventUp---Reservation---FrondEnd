@@ -1,0 +1,129 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+        <app-dashboard></app-dashboard>
+
+        <div class="dashboard-content">
+            <div class="container-fluid">
+                <div class="dashboard-header">
+                    <h1 class="mat-h1-v2" >Hall</h1>
+                    <button type="submit" (click)="openCreatedialog()" class="btn btn-primary"  style=" float: right;">Add New Hall</button>
+
+
+                  
+                </div>
+<div class="filter filter-gray push-bottom">
+                        <form >
+                    <div class="row">
+                    
+                        
+                        <div class="col-md-4">
+                        <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="nameSearch" (ngModelChange)="search()" name="name">
+                        </div><!-- /.form-group -->
+                        </div><!-- /.col-* -->
+                        
+                        <div class="col-md-3">
+                        <div class="form-group">
+                        <label>Usage</label>
+                        <input type="text" class="form-control" [(ngModel)]="usageSearch" (ngModelChange)="search()" name="usage"> 
+                        </div><!-- /.form-group -->
+                        </div><!-- /.col-* -->
+                        
+                        <div class="col-md-3">
+                        <div class="form-group">
+                        <label>Capacity</label>
+                        <input type="number" class="form-control" [(ngModel)]="capacitySearch" (ngModelChange)="search()" name="capacity">
+                        </div><!-- /.form-group -->		
+                        </div><!-- /.col-* -->
+                        
+                        <div class="col-md-2">
+                        <div class="form-group">
+                        <label>Max Price</label>
+                        <input type="number" class="form-control" [(ngModel)]="priceSearch" (ngModelChange)="search()" name="price">
+                        </div><!-- /.form-group -->		
+                        </div><!-- /.col-* -->
+                   
+
+        
+                    </div><!-- /.row -->
+                        </form>
+                        </div><!-- /.filter -->
+                <div class="row" >
+
+                    <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let item of hall.allHalls| paginate: { itemsPerPage: 8, currentPage: p }">
+                     
+                        <div class="listing-box"  >
+                           
+                            <div  class="listing-box-image"  style="background-image: url('{{item.imageUrl}}')"  >
+                                <span class="listing-box-image-links">
+                                    <a (click)="openEditDialog(item.hallid)" ><i class="fa fa-pencil"></i> <span>Edit Hall</span></a>
+                                    <a (click)="openGallery(item.hallid)" ><i class="fa fa-picture-o"></i> <span>Gallery</span></a>
+                                    </span> 
+                                    
+                  
+                            <div class="listing-box-image-label" *ngIf="item.sale>0" >SALE</div><!-- /.listing-box-image-label -->
+                          
+                            </div>
+                            <!-- /.listing-box-image -->
+
+                            <div style="height:100px;" class="listing-box-title">
+                                <h2><a href="">{{item.name}}</a></h2>
+                                <h3 *ngIf="item.sale>0; else elseBlock"><i class="fa fa-usd"></i>{{item.reservationprice}} - <i class="fa fa-usd"></i>{{item.sale}}</h3>
+                                <ng-template #elseBlock><i class="fa fa-usd"></i>{{item.reservationprice}}</ng-template>
+                            </div><!-- /.listing-box-title -->
+
+                            <div class="listing-box-content">
+                               
+                                <dl>
+                                    <dt>Usage</dt>
+                                    <dd>{{item.usage}}</dd>
+                                    <dt>Rate</dt>
+                                    <dd>{{item.rate}} <i class="fa fa-star"></i></dd>
+                                    <dt>Capacity</dt>
+                                    <dd>{{item.capacity}} <i class="fa fa-user"></i></dd>
+                                    <dt>Waiters</dt>
+                                    <dd *ngIf="item.waiters>0; else elseBlock1">Yes</dd>
+                                    <ng-template #elseBlock1><dd>No</dd></ng-template>
+                                   
+                                </dl>
+                               
+                            <!-- /.listing-row-social -->	
+
+                                <!-- <dl>
+                                    <a (click)="openDeleteDialog(item.locationid)" ><i class="fa fa-trash"></i> <span>Delete</span></a>
+
+                                </dl> -->
+                            </div><!-- /.listing-box-cotntent -->
+                            <ul class="listing-box-social-v2"><span style="
+                                font-size: 33px;color: #d9534f;cursor: pointer;" (click)="openDeleteDialog(item.locationid)"  >
+                                <i class="fa fa-trash-o"></i>
+                            </span></ul>
+                        </div><!-- /.listing-box -->
+                    </div><!-- /.col-* -->
+
+                    <div class="pagination-wrapper">
+      
+                        <pagination-controls  class="my-pagination"  (pageChange)="p = $event"></pagination-controls>
+                                </div>
+                </div><!-- /.row -->
+                <style>
+                    .my-pagination /deep/ .ngx-pagination .current {
+                      background: #0BB7A5;
+                    }
+                   
+                  </style>
+            </div><!-- /.container -->
+        </div><!-- /.dashboard-content -->
+    </div><!-- /.dashboard -->
+</div><!-- /.page-wrapper -->
+
+
+<ng-template #hallDeleteDialog>
+    <h2>Are You Sure you want to delete this item</h2>
+    <mat-dialog-actions align="end">
+      <button class="btn btn-info" mat-button mat-dialog-close="no">No</button>&nbsp;&nbsp;&nbsp;
+      <button class="btn btn-danger" mat-button mat-dialog-close="yes">yes</button>
+    </mat-dialog-actions>
+  
+  </ng-template>

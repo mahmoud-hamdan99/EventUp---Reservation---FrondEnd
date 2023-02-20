@@ -1,0 +1,52 @@
+<div class="page-wrapper">
+    <div class="dashboard-wrapper">
+    
+    <app-dashboard></app-dashboard>
+    <div class="dashboard-content">	
+        <div class="container-fluid">
+            <div class="dashboard-header">
+                <h1>Event</h1>
+            </div><!-- /.dashboard-header -->
+            <div class="row">
+                <table class="table table-users">
+        <thead>
+    <tr>
+    
+        <th>#paymentid</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Amount</th>
+         <th>Data</th>
+          <th>Status</th>
+        <th>Description</th>
+        <th>url</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    <tr *ngFor="let item of pay.allPayment">
+        <td>{{item.id}}</td>
+         <td>{{item.customerName}}</td>
+        <td>{{item.customerEmail}}</td>
+        <td>{{item.amount|currency:"USD"}}</td>
+        <td>{{item.date |date:"short"}}</td>
+        <td class="btn btn-success" style="margin-top: 10px;">{{item.status}}</td>
+        <td>{{item.description}}</td>
+        <td class="min-width">
+            <a class="btn btn-primary" href="{{item.receipt}}"  ><i class="fa fa-pencil"></i>View</a>
+        </td>
+
+        
+    </tr>
+  
+    </tbody>
+    </table>
+ 
+            </div><!-- /.row -->	
+
+
+    </div>
+</div>
+</div>
+</div>
+    

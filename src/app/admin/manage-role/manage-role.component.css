@@ -1,0 +1,11 @@
+/* .dashboard-content {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04), transparent 120px);
+    padding: 0 15px 15px 15px;
+    width:80% !important;
+} */
+
+.mat-h1-v2 {
+    font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 -20px !important;
+}
